@@ -13,6 +13,6 @@ class GuestLayout extends Component
      */
     public function render()
     {
-        return view('account.layouts.guest');
+        return view('my.layouts.guest');
     }
 }
