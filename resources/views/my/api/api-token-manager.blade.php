@@ -11,7 +11,7 @@
         <x-slot name="form">
             <!-- Token Name -->
             <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="name" value="{{ __('Token Name') }}" />
+                <x-jet-label for="name" value="{{ __('Имя токена') }}" />
                 <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="createApiTokenForm.name" autofocus />
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
@@ -19,7 +19,7 @@
             <!-- Token Permissions -->
             @if (Laravel\Jetstream\Jetstream::hasPermissions())
                 <div class="col-span-6">
-                    <x-jet-label for="permissions" value="{{ __('Permissions') }}" />
+                    <x-jet-label for="permissions" value="{{ __('Разрешения') }}" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
@@ -55,7 +55,7 @@
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('Вы можете удалить любой из ваших существующих токенов, если они больше не нужны.') }}
+                    {{ __('Вы можете удалить любой из ваших существующих токенов, если он вам больше не нужен.') }}
                 </x-slot>
 
                 <!-- API Token List -->
@@ -120,7 +120,7 @@
     <!-- API Token Permissions Modal -->
     <x-jet-dialog-modal wire:model="managingApiTokenPermissions">
         <x-slot name="title">
-            {{ __('Разрешения на токены API') }}
+            {{ __('Разрешения на токен API') }}
         </x-slot>
 
         <x-slot name="content">

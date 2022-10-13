@@ -1,3 +1,3 @@
-# Privacy Policy
+# Политика конфиденциальности
 
-Edit this file to define the privacy policy for your application.
+Отредактируйте этот файл, чтобы определить политику конфиденциальности для вашего приложения.
