@@ -34,8 +34,8 @@
                     <div class="row">
                         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="images/logo/logo.png" alt="logo">
+                                <a href="{{ route("home") }}">
+                                    <img src="{{ asset("images/logo/logo.png") }}" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -43,34 +43,16 @@
                         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
                             <nav class="mainmenu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.html">Home</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop"><a href="portfolio-gutter-box-3.html">portfolio</a>
-                                        <ul class="dropdown">
-                                            <li><a href="portfolio-gutter-box-3.html">Boxed Gutter 3 Col</a></li>
-                                            <li><a href="portfolio-gutter-full-wide-4.html">Wide Gutter 4 Col </a></li>
-                                            <li><a href="portfolio-card-box-3.html">Card Gutter 3 Col </a></li>
-                                            <li><a href="portfolio-masonry-3.html">Masonry Box 3 Col </a></li>
-                                            <li><a href="portfolio-gutter-masonry-fullwide-4.html">Masonry Wide 4 Col </a></li>
-                                            <li><a href="portfolio-gutter-box-3-carousel.html">carousel Gutter 3 Col </a></li>
-                                            <li><a href="portfolio-justified-box-3.html">justified box 3 Col</a></li>
-                                            <li><a href="single-portfolio-gallery.html">Portfolio Details </a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop"><a href="blog.html">Blog</a>
+                                    <li class="drop"><a href="{{ route("home") }}">Главная</a></li>
+                                    <li class="drop"><a href="blog.html">Блог</a>
                                         <ul class="dropdown">
                                             <li><a href="blog.html">blog 3 column</a></li>
                                             <li><a href="blog-2-col-rightsidebar.html">2 col right siderbar</a></li>
                                             <li><a href="blog-details-left-sidebar.html"> blog details</a></li>
                                         </ul>
                                     </li>
-                                    <li class="drop"><a href="shop.html">Shop</a>
+                                    <li class="drop"><a href="shop.html">Магазин</a>
                                         <ul class="dropdown mega_dropdown">
-                                            <!-- Start Single Mega MEnu -->
                                             <li><a class="mega__title" href="shop.html">shop layout</a>
                                                 <ul class="mega__item">
                                                     <li><a href="#">demo page title</a></li>
@@ -83,22 +65,6 @@
                                                     <li><a href="#">demo page title</a></li>
                                                 </ul>
                                             </li>
-                                            <!-- End Single Mega MEnu -->
-                                            <!-- Start Single Mega MEnu -->
-                                            <li><a class="mega__title" href="shop.html">product details layout</a>
-                                                <ul class="mega__item">
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                    <li><a href="#">demo page title</a></li>
-                                                </ul>
-                                            </li>
-                                            <!-- End Single Mega MEnu -->
-                                            <!-- Start Single Mega MEnu -->
                                             <li>
                                                 <ul class="mega__item">
                                                     <li>
@@ -110,10 +76,9 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <!-- End Single Mega MEnu -->
                                         </ul>
                                     </li>
-                                    <li class="drop"><a href="#">pages</a>
+                                    <li class="drop"><a href="#">Страницы</a>
                                         <ul class="dropdown">
                                             <li><a href="about.html">about</a></li>
                                             <li><a href="shop.html">shop</a></li>
@@ -126,38 +91,21 @@
                                             <li><a href="login-register.html">login & register</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="contact.html">Контакты</a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-menu clearfix visible-xs visible-sm">
                                 <nav id="mobile_dropdown">
                                     <ul>
-                                        <li><a href="index.html">Home</a>
-                                            <ul>
-                                                <li><a href="index.html">Home 1</a></li>
-                                                <li><a href="index-2.html">Home 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">portfolio</a>
-                                            <ul class="dropdown">
-                                                <li><a href="portfolio-gutter-box-3.html">Boxed Gutter 3 Col</a></li>
-                                                <li><a href="portfolio-gutter-full-wide-4.html">Wide Gutter 4 Col </a></li>
-                                                <li><a href="portfolio-card-box-3.html">Card Gutter 3 Col </a></li>
-                                                <li><a href="portfolio-masonry-3.html">Masonry Box 3 Col </a></li>
-                                                <li><a href="portfolio-gutter-masonry-fullwide-4.html">Masonry Wide 4 Col </a></li>
-                                                <li><a href="portfolio-gutter-box-3-carousel.html">carousel Gutter 3 Col </a></li>
-                                                <li><a href="portfolio-justified-box-3.html">justified box 3 Col</a></li>
-                                                <li><a href="single-portfolio-gallery.html">Portfolio Details </a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="blog.html">blog</a>
+                                        <li><a href="{{ route("home") }}">Главная</a></li>
+                                        <li><a href="blog.html">Блог</a>
                                             <ul>
                                                 <li><a href="blog.html">blog 3 column</a></li>
                                                 <li><a href="blog-2-col-rightsidebar.html">2 col right siderbar</a></li>
                                                 <li><a href="blog-details-left-sidebar.html"> blog details</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">pages</a>
+                                        <li><a href="#">Страницы</a>
                                             <ul>
                                                 <li><a href="about.html">about</a></li>
                                                 <li><a href="shop.html">shop</a></li>
@@ -170,7 +118,7 @@
                                                 <li><a href="login-register.html">login & register</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><a href="contact.html">Контакты</a></li>
                                     </ul>
                                 </nav>
                             </div>                          
@@ -179,7 +127,11 @@
                         <div class="col-md-2 col-sm-4 col-xs-3">  
                             <ul class="menu-extra">
                                 <li class="search search__open hidden-xs"><span class="ti-search"></span></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
+                                @auth
+                                    <li><a href="{{ url('/my') }}"><span class="ti-user"></span></a></li>
+                                @else
+                                    <li><a href="{{ route('login') }}"><span class="ti-user"></span></a></li>                             
+                                @endauth
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
                                 <li class="toggle__menu hidden-xs hidden-sm"><span class="ti-menu"></span></li>
                             </ul>
@@ -192,7 +144,7 @@
         </header>
         
         <div class="body__overlay"></div>
-        <div class="offset__wrapper">
+                <div class="offset__wrapper">
             <!-- Start Search Popap -->
             <div class="search__area">
                 <div class="container" >
@@ -333,7 +285,7 @@
                             <div class="ft__widget">
                                 <div class="ft__logo">
                                     <a href="index.html">
-                                        <img src="images/logo/logo.png" alt="footer logo">
+                                        <img src="{{ asset("images/logo/logo.png") }}" alt="footer logo">
                                     </a>
                                 </div>
                                 <div class="footer-address">
@@ -343,7 +295,7 @@
                                                 <i class="zmdi zmdi-pin"></i>
                                             </div>
                                             <div class="address-text">
-                                                <p>194 Main Rd T, FS Rayed <br> VIC 3057, USA</p>
+                                                <p>Адрес</p>
                                             </div>
                                         </li>
                                         <li>
@@ -351,7 +303,7 @@
                                                 <i class="zmdi zmdi-email"></i>
                                             </div>
                                             <div class="address-text">
-                                                <a href="#"> info@example.com</a>
+                                                <a href="#">Адрес электронной почты</a>
                                             </div>
                                         </li>
                                         <li>
@@ -359,7 +311,7 @@
                                                 <i class="zmdi zmdi-phone-in-talk"></i>
                                             </div>
                                             <div class="address-text">
-                                                <p>+012 345 678 102 </p>
+                                                <p>Номер телефона</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -376,78 +328,58 @@
                         <!-- Start Single Footer Widget -->
                         <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
                             <div class="ft__widget">
-                                <h2 class="ft__title">Categories</h2>
+                                <h2 class="ft__title">Категории</h2>
                                 <ul class="footer-categories">
-                                    <li><a href="shop-sidebar.html">Men</a></li>
-                                    <li><a href="shop-sidebar.html">Women</a></li>
-                                    <li><a href="shop-sidebar.html">Accessories</a></li>
-                                    <li><a href="shop-sidebar.html">Shoes</a></li>
-                                    <li><a href="shop-sidebar.html">Dress</a></li>
-                                    <li><a href="shop-sidebar.html">Denim</a></li>
+                                    <li><a href="shop-sidebar.html">Мужское</a></li>
+                                    <li><a href="shop-sidebar.html">Женское</a></li>
+                                    <li><a href="shop-sidebar.html">Аксессуары</a></li>
+                                    <li><a href="shop-sidebar.html">Обувь</a></li>
+                                    <li><a href="shop-sidebar.html">Платье</a></li>
+                                    <li><a href="shop-sidebar.html">Джинсы</a></li>
                                 </ul>
                             </div>
                         </div>
                         <!-- Start Single Footer Widget -->
                         <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
                             <div class="ft__widget">
-                                <h2 class="ft__title">Infomation</h2>
+                                <h2 class="ft__title">Информация</h2>
                                 <ul class="footer-categories">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Returns & Exchanges</a></li>
-                                    <li><a href="#">Shipping & Delivery</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="about.html">О нас</a></li>
+                                    <li><a href="contact.html">Связаться с нами</a></li>
+                                    <li><a href="#">Правила и условия</a></li>
+                                    <li><a href="#">Возвраты и обмены</a></li>
+                                    <li><a href="#">Отгрузка и доставка</a></li>
+                                    <li><a href="#">Политика конфиденциальности</a></li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- Start Single Footer Widget -->
                         <div class="col-md-3 col-lg-3 col-lg-offset-1 col-sm-6 smt-30 xmt-30">
                             <div class="ft__widget">
-                                <h2 class="ft__title">Newsletter</h2>
+                                <h2 class="ft__title">Новости</h2>
                                 <div class="newsletter__form">
-                                    <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
-                                    <div class="input__box">
-                                        <div id="mc_embed_signup">
-                                            <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                                <div id="mc_embed_signup_scroll" class="htc__news__inner">
-                                                    <div class="news__input">
-                                                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
-                                                    </div>
-                                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                                    <div class="clearfix subscribe__btn"><input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>        
+                                    <p>Подпишитесь на нашу рассылку новостей и получите скидку 10% на свою первую покупку.</p>                                  
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Footer Widget -->
                     </div>
                 </div>
-                <!-- Start Copyright Area -->
                 <div class="htc__copyright__area">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="copyright__inner">
                                 <div class="copyright">
-                                    <p>© 2017 <a href="#">your website name</a>
-                                    All Right Reserved.</p>
+                                    <p>© 2022 <a href="#">Shop.test</a>
+                                    Все права защищены.</p>
                                 </div>
                                 <ul class="footer__menu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="{{ route("home") }}">Главная</a></li>
+                                    <li><a href="shop.html">Товары</a></li>
+                                    <li><a href="contact.html">Связаться с нами</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Copyright Area -->
             </div>
         </footer>
     </div>
@@ -456,13 +388,13 @@
         @yield('modals')
     </div>
 
-    <script src="js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset("js/vendor/jquery-1.12.0.min.js") }}"></script>
+    <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("js/plugins.js") }}"></script>
+    <script src="{{ asset("js/slick.min.js") }}"></script>
+    <script src="{{ asset("js/owl.carousel.min.js") }}"></script>
+    <script src="{{ asset("js/waypoints.min.js") }}"></script>
+    <script src="{{ asset("js/main.js") }}"></script>
     @yield('scripts')
 </body>
 </html>
