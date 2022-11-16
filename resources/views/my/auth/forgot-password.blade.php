@@ -23,6 +23,11 @@
         <div class="htc__login__register bg__white ptb--130">
             <div class="container">
                 <div class="row">
+                    @if (session('status'))
+                        <div class="mb-4 font-medium text-sm text-green-600">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="col-md-6 col-md-offset-3">
                          {{ __('Забыли свой пароль? Без проблем. Просто сообщите нам свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля.') }}
                     </div>
