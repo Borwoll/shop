@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="product__list another-product-style">
-                    <div class="col-md-12 single__pro col-lg-12 cat--1 col-sm-12 col-xs-12" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="col-md-12 single__pro col-lg-12 cat--1 col-sm-12 col-xs-12">
                         @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                             @livewire('profile.update-profile-information-form')
                         @endif

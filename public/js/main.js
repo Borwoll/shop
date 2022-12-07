@@ -584,42 +584,42 @@ $('.image-popup').magnificPopup({
     
     
 /* isotop active */
-    var $grid = $('.grid');
-    var $gridJustified = $('.grid-justified');
-    var $gridItems = '.grid-item';
-    // filter items on button click
-    $grid.imagesLoaded(function() {
+    // var $grid = $('.grid');
+    // var $gridJustified = $('.grid-justified');
+    // var $gridItems = '.grid-item';
+    // // filter items on button click
+    // $grid.imagesLoaded(function() {
         
-        $('.portfolio-menu-active').on('click', 'button', function() {
-            $(this).siblings('.active').removeClass('active');
-            $(this).addClass('active');
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({
-                filter: filterValue
-            });
-        });
+    //     $('.portfolio-menu-active').on('click', 'button', function() {
+    //         $(this).siblings('.active').removeClass('active');
+    //         $(this).addClass('active');
+    //         var filterValue = $(this).attr('data-filter');
+    //         $grid.isotope({
+    //             filter: filterValue
+    //         });
+    //     });
         
-        // init Isotope
-        $grid.isotope({
-            itemSelector: $gridItems,
-            percentPosition: true,
-            masonry: {
-                // use outer width of grid-sizer for columnWidth
-                columnWidth: $gridItems,
-            }
-        });
+    //     // init Isotope
+    //     $grid.isotope({
+    //         itemSelector: $gridItems,
+    //         percentPosition: true,
+    //         masonry: {
+    //             // use outer width of grid-sizer for columnWidth
+    //             columnWidth: $gridItems,
+    //         }
+    //     });
         
-        // init Isotope
-        $gridJustified.isotope({
-            itemSelector: $gridItems,
-            percentPosition: true,
-            layoutMode: 'fitRows',
-            masonry: {
-                // use outer width of grid-sizer for columnWidth
-                columnWidth: 1,
-            }
-        });
-    });
+    //     // init Isotope
+    //     $gridJustified.isotope({
+    //         itemSelector: $gridItems,
+    //         percentPosition: true,
+    //         layoutMode: 'fitRows',
+    //         masonry: {
+    //             // use outer width of grid-sizer for columnWidth
+    //             columnWidth: 1,
+    //         }
+    //     });
+    // });
     
     
     /*--
