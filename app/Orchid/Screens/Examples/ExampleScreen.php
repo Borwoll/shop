@@ -15,198 +15,83 @@ use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
+use App\Entity\User\User;
+use App\Entity\Blog\Comment;
+use App\Entity\Shop\Product\Product;
+use App\Entity\Shop\Order\Order;
 
-class ExampleScreen extends Screen
-{
-    /**
-     * Fish text for the table.
-     */
+
+class ExampleScreen extends Screen {
     public const TEXT_EXAMPLE = 'Lorem ipsum но в первый раз сила начала иссякать,
     если бы раньше не было так трудно жить на озере Уорт.
     Нектар библиотеки Мацумото будет жить вечно, но матрас будет терзаться круглый год,
     и наши влюбленные не будут беспокоиться о трауре.';
 
-    /**
-     * Query data.
-     *
-     * @return array
-     */
-    public function query(): iterable
-    {
+    public function query(): iterable {
         return [
-            'charts'  => [
-                [
-                    'name'   => 'Some Data',
-                    'values' => [25, 40, 30, 35, 8, 52, 17],
-                    'labels' => ['12am-3am', '3am-6am', '6am-9am', '9am-12pm', '12pm-3pm', '3pm-6pm', '6pm-9pm'],
-                ],
-                [
-                    'name'   => 'Another Set',
-                    'values' => [25, 50, -10, 15, 18, 32, 27],
-                    'labels' => ['12am-3am', '3am-6am', '6am-9am', '9am-12pm', '12pm-3pm', '3pm-6pm', '6pm-9pm'],
-                ],
-                [
-                    'name'   => 'Yet Another',
-                    'values' => [15, 20, -3, -15, 58, 12, -17],
-                    'labels' => ['12am-3am', '3am-6am', '6am-9am', '9am-12pm', '12pm-3pm', '3pm-6pm', '6pm-9pm'],
-                ],
-                [
-                    'name'   => 'And Last',
-                    'values' => [10, 33, -8, -3, 70, 20, -34],
-                    'labels' => ['12am-3am', '3am-6am', '6am-9am', '9am-12pm', '12pm-3pm', '3pm-6pm', '6pm-9pm'],
-                ],
-            ],
-            'table'   => [
-                new Repository(['id' => 100, 'name' => self::TEXT_EXAMPLE, 'price' => 10.24, 'created_at' => '01.01.2020']),
-                new Repository(['id' => 200, 'name' => self::TEXT_EXAMPLE, 'price' => 65.9, 'created_at' => '01.01.2020']),
-                new Repository(['id' => 300, 'name' => self::TEXT_EXAMPLE, 'price' => 754.2, 'created_at' => '01.01.2020']),
-                new Repository(['id' => 400, 'name' => self::TEXT_EXAMPLE, 'price' => 0.1, 'created_at' => '01.01.2020']),
-                new Repository(['id' => 500, 'name' => self::TEXT_EXAMPLE, 'price' => 0.15, 'created_at' => '01.01.2020']),
-
-            ],
             'metrics' => [
-                'sales'    => ['value' => number_format(6851), 'diff' => 10.08],
-                'visitors' => ['value' => number_format(24668), 'diff' => -30.76],
-                'orders'   => ['value' => number_format(10000), 'diff' => 0],
-                'total'    => number_format(65661),
+                'users'    => ['value' => User::count()],
+                'orders' => ['value' => Order::count()],
+                'products'   => ['value' => Product::count()],
+                'comments'    => Comment::count(),
             ],
         ];
     }
 
-    /**
-     * Display header name.
-     *
-     * @return string|null
-     */
-    public function name(): ?string
-    {
+    public function name(): ?string {
         return 'Главная';
     }
 
-    /**
-     * Display header description.
-     *
-     * @return string|null
-     */
-    public function description(): ?string
-    {
+    public function description(): ?string {
         return 'На этой странице представлена основная информация об активности интернет-магазина';
     }
 
-    /**
-     * Button commands.
-     *
-     * @return \Orchid\Screen\Action[]
-     */
-    public function commandBar(): iterable
-    {
+
+    public function commandBar(): iterable {        
         return [
-
-            Button::make('Уведомление')
-                ->method('showToast')
-                ->novalidate()
-                ->icon('bag'),
-
-            ModalToggle::make('Модельное окно')
-                ->modal('exampleModal')
-                ->method('showToast')
-                ->icon('full-screen'),
-
-            Button::make('Выгрузка файла')
-                ->method('export')
+            DropDown::make('Выгрузка файла')
                 ->icon('cloud-download')
-                ->rawClick()
-                ->novalidate(),
-
-            DropDown::make('Выпадающее меню')
-                ->icon('folder-alt')
                 ->list([
+                    Button::make('Json')
+                        ->method('export')
+                        ->rawClick()
+                        ->novalidate(),
 
-                    Button::make('Action')
-                        ->method('showToast')
-                        ->icon('bag'),
+                    Button::make('Csv')
+                        ->method('export')
+                        ->rawClick()
+                        ->novalidate(),
 
-                    Button::make('Another action')
-                        ->method('showToast')
-                        ->icon('bubbles'),
+                    Button::make('Pdf')
+                        ->method('export')
+                        ->rawClick()
+                        ->novalidate(),
 
-                    Button::make('Something else here')
-                        ->method('showToast')
-                        ->icon('bulb'),
+                    Button::make('Docx')
+                        ->method('export')
+                        ->rawClick()
+                        ->novalidate(),
 
-                    Button::make('Confirm button')
-                        ->method('showToast')
-                        ->confirm('If you click you will see a toast message')
-                        ->novalidate()
-                        ->icon('shield'),
+                    Button::make('Xlsx')
+                        ->method('export')
+                        ->rawClick()
+                        ->novalidate(),
                 ]),
 
         ];
     }
 
-    /**
-     * Views.
-     *
-     * @return string[]|\Orchid\Screen\Layout[]
-     */
-    public function layout(): iterable
-    {
+    public function layout(): iterable {
         return [
             Layout::metrics([
-                'Продажи сегодня'    => 'metrics.sales',
-                'Посетители сегодня' => 'metrics.visitors',
-                'Отложенные ордера' => 'metrics.orders',
-                'Общий заработок' => 'metrics.total',
+                'Количество пользователей' => 'metrics.users',
+                'Количество заказов' => 'metrics.orders',
+                'Количество товаров' => 'metrics.products',
+                'Количество комментариев' => 'metrics.comments',
             ]),
-
-            Layout::columns([
-                ChartLineExample::make('charts', 'Line Chart')
-                    ->description('It is simple Line Charts with different colors.'),
-
-                ChartBarExample::make('charts', 'Bar Chart')
-                    ->description('It is simple Bar Charts with different colors.'),
-            ]),
-
-            Layout::table('table', [
-                TD::make('id', 'ID')
-                    ->width('150')
-                    ->render(fn (Repository $model) => // Please use view('path')
-"<img src='https://loremflickr.com/500/300?random={$model->get('id')}'
-                              alt='sample'
-                              class='mw-100 d-block img-fluid rounded-1 w-100'>
-                            <span class='small text-muted mt-1 mb-0'># {$model->get('id')}</span>"),
-
-                TD::make('name', 'Name')
-                    ->width('450')
-                    ->render(fn (Repository $model) => Str::limit($model->get('name'), 200)),
-
-                TD::make('price', 'Price')
-                    ->render(fn (Repository $model) => '$ '.number_format($model->get('price'), 2)),
-
-                TD::make('created_at', 'Created'),
-            ]),
-
-            Layout::modal('exampleModal', Layout::rows([
-                Input::make('toast')
-                    ->title('Messages to display')
-                    ->placeholder('Hello world!')
-                    ->help('The entered text will be displayed on the right side as a toast.')
-                    ->required(),
-            ]))->title('Create your own toast message'),
         ];
     }
 
-    /**
-     * @param Request $request
-     */
-    public function showToast(Request $request): void
-    {
-        Toast::warning($request->get('toast', 'Hello, world! This is a toast message.'));
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     public function export()
     {
         return response()->streamDownload(function () {

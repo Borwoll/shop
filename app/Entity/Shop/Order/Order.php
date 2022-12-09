@@ -62,13 +62,13 @@ class Order extends Model
         ]);
     }
 
-    public function pay($method): void
+    public function pay(): void
     {
         if ($this->isPaid()) {
             throw new DomainException('Order is already paid.');
         }
 
-        $this->payment_method = $method;
+        $this->payment_method = "Автоматически";
         $this->addStatus(Status::PAID);
     }
 

@@ -10,7 +10,7 @@
                                 <div class="slider__inner">
                                     <h1>New Product <span class="text--theme">Collection</span></h1>
                                     <div class="slider__btn">
-                                        <a class="htc__btn" href="cart.html">shop now</a>
+                                        <a class="htc__btn" href="{{ route("shop.cart.index") }}">shop now</a>
                                     </div>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                                 <div class="slider__inner">
                                     <h1>New Product <span class="text--theme">Collection</span></h1>
                                     <div class="slider__btn">
-                                        <a class="htc__btn" href="cart.html">shop now</a>
+                                        <a class="htc__btn" href="{{ route("shop.cart.index") }}">shop now</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="new__product__details">
                                 <h2><a href="product-details.html">New Product Collection</a></h2>
                                 <div class="new__product__btn">
-                                    <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                                    <a class="htc__btn shop__now__btn" href="{{ route("shop.cart.index") }}">shop now</a>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                     <div class="product__hover__info">
                                         <ul class="product__action">
                                             <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add TO Cart" href="{{ route("shop.cart.index") }}"><span class="ti-shopping-cart"></span></a></li>
                                             <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
                                         </ul>
                                     </div>
@@ -134,7 +134,7 @@
                                     <div class="product__hover__info">
                                         <ul class="product__action">
                                             <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add TO Cart" href="{{ route("shop.cart.index") }}"><span class="ti-shopping-cart"></span></a></li>
                                             <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
                                         </ul>
                                     </div>
@@ -161,7 +161,7 @@
                                     <div class="product__hover__info">
                                         <ul class="product__action">
                                             <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add TO Cart" href="{{ route("shop.cart.index") }}"><span class="ti-shopping-cart"></span></a></li>
                                             <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
                                         </ul>
                                     </div>
@@ -188,7 +188,7 @@
                                     <div class="product__hover__info">
                                         <ul class="product__action">
                                             <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add TO Cart" href="{{ route("shop.cart.index") }}"><span class="ti-shopping-cart"></span></a></li>
                                             <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
                                         </ul>
                                     </div>
@@ -215,7 +215,7 @@
                                     <div class="product__hover__info">
                                         <ul class="product__action">
                                             <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add TO Cart" href="{{ route("shop.cart.index") }}"><span class="ti-shopping-cart"></span></a></li>
                                             <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
                                         </ul>
                                     </div>
@@ -242,7 +242,7 @@
                                     <div class="product__hover__info">
                                         <ul class="product__action">
                                             <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add TO Cart" href="{{ route("shop.cart.index") }}"><span class="ti-shopping-cart"></span></a></li>
                                             <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
                                         </ul>
                                     </div>

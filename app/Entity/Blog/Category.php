@@ -5,10 +5,12 @@ namespace App\Entity\Blog;
 use App\Entity\Blog\Post\Post;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
+use Orchid\Screen\AsSource;
 
 class Category extends Model
 {
     use NodeTrait;
+    use AsSource;
 
     public $timestamps = false;
 

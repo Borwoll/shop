@@ -2,19 +2,16 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\Examples\ExampleCardsScreen;
-use App\Orchid\Screens\Examples\ExampleChartsScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsScreen;
-use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
-use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+
+use App\Orchid\Screens\Blog\Category\CategoryIndex;
+
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -35,19 +32,18 @@ Route::screen('/main', ExampleScreen::class)
 ->breadcrumbs(fn (Trail $trail) => $trail
     ->push('Главная'));
 
-Route::screen('main-fields', ExampleFieldsScreen::class)->name('platform.main.fields');
-Route::screen('main-layouts', ExampleLayoutsScreen::class)->name('platform.main.layouts');
-Route::screen('main-charts', ExampleChartsScreen::class)->name('platform.main.charts');
-Route::screen('main-editors', ExampleTextEditorsScreen::class)->name('platform.main.editors');
-Route::screen('main-cards', ExampleCardsScreen::class)->name('platform.main.cards');
-Route::screen('main-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.main.advanced');
-
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
     ->name('platform.profile')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.main')
         ->push(__('Профиль'), route('platform.profile')));
+
+Route::screen('blog/category', CategoryIndex::class)
+->name('platform.systems.blog.category')
+->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Категории'), route('platform.systems.blog.category')));
 
 // Platform > System > Users
 Route::screen('users/{user}/edit', UserEditScreen::class)

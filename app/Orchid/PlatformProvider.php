@@ -22,9 +22,6 @@ class PlatformProvider extends OrchidServiceProvider
         // ...
     }
 
-    /**
-     * @return Menu[]
-     */
     public function registerMainMenu(): array
     {
         return [
@@ -32,6 +29,74 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('monitor')
                 ->route('platform.main')
                 ->title('Навигация'),
+
+            Menu::make(__('Категории'))
+                ->icon('user')
+                ->route('platform.systems.blog.category')
+                ->permission('platform.systems.blog.category')
+                ->title(__('Блог')),
+
+            // Menu::make(__('Комментарии'))
+            //     ->icon('user')
+            //     ->route('platform.systems.blog.comments')
+            //     ->permission('platform.systems.blog.comments'),
+
+            // Menu::make(__('Посты'))
+            //     ->icon('user')
+            //     ->route('platform.systems.blog.posts')
+            //     ->permission('platform.systems.blog.posts'),
+
+            // Menu::make(__('Теги'))
+            //     ->icon('user')
+            //     ->route('platform.systems.blog.tags')
+            //     ->permission('platform.systems.blog.tags'),
+                
+            // Menu::make(__('Регионы'))
+            //     ->icon('user')
+            //     ->route('platform.systems.location.regions')
+            //     ->permission('platform.systems.location.regions')
+            //     ->title(__('Местоположение')),
+
+            // Menu::make(__('Бренды'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.brands')
+            //     ->permission('platform.systems.shop.brands')
+            //     ->title(__('Магазин')),
+
+            // Menu::make(__('Категории'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.category')
+            //     ->permission('platform.systems.shop.category'),
+
+            // Menu::make(__('Характеристики'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.characteristics')
+            //     ->permission('platform.systems.shop.characteristics'),
+
+            // Menu::make(__('Комментарии'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.comments')
+            //     ->permission('platform.systems.shop.comments'),
+
+            // Menu::make(__('Методы доставки'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.delivery')
+            //     ->permission('platform.systems.shop.delivery'),
+
+            // Menu::make(__('Заказы'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.orders')
+            //     ->permission('platform.systems.shop.orders'),
+
+            // Menu::make(__('Товары'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.products')
+            //     ->permission('platform.systems.shop.products'),
+
+            // Menu::make(__('Отзывы'))
+            //     ->icon('user')
+            //     ->route('platform.systems.shop.reviews')
+            //     ->permission('platform.systems.shop.reviews'),
 
             Menu::make(__('Пользователи'))
                 ->icon('user')
@@ -46,24 +111,37 @@ class PlatformProvider extends OrchidServiceProvider
         ];
     }
 
-    /**
-     * @return Menu[]
-     */
     public function registerProfileMenu(): array
     {
         return [
             Menu::make('Личный кабинет')
                 ->route('my')
-                ->icon('exit'),
+                ->icon('monitor'),
         ];
     }
 
-    /**
-     * @return ItemPermission[]
-     */
     public function registerPermissions(): array
     {
         return [
+            ItemPermission::group(__('Блог'))
+                ->addPermission('platform.systems.blog.category', __('Категории'))
+                ->addPermission('platform.systems.blog.comments', __('Комментарии'))
+                ->addPermission('platform.systems.blog.posts', __('Посты'))
+                ->addPermission('platform.systems.blog.tags', __('Теги')),
+
+            ItemPermission::group(__('Местоположение'))
+                ->addPermission('platform.systems.location.regions', __('Регионы')),
+
+            ItemPermission::group(__('Магазин'))
+                ->addPermission('platform.systems.shop.brands', __('Бренды'))
+                ->addPermission('platform.systems.shop.category', __('Категории'))
+                ->addPermission('platform.systems.shop.characteristics', __('Характеристики'))
+                ->addPermission('platform.systems.shop.comments', __('Комментарии'))
+                ->addPermission('platform.systems.shop.delivery', __('Методы доставки'))
+                ->addPermission('platform.systems.shop.orders', __('Заказы'))
+                ->addPermission('platform.systems.shop.products', __('Товары'))
+                ->addPermission('platform.systems.shop.reviews', __('Оценки')),
+
             ItemPermission::group(__('Система'))
                 ->addPermission('platform.systems.roles', __('Роли'))
                 ->addPermission('platform.systems.users', __('Пользователи')),

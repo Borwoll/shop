@@ -6,20 +6,22 @@
             <div class="htc__product__container">
                 <div class="row">
                     <div class="product__list another-product-style">
+                        @if ($user->hasFilledProfile())
                         <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
                             <div class="product foo">
                                 <div class="product__inner">
                                     <div class="pro__thumb">
-                                        <a href="#">
+                                        <a href="{{ route("orders.index") }}#">
                                             <img src="{{ asset("images/my/box.png") }}">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="product__details">
-                                    <h2><a href="product-details.html">Мои заказы</a></h2>
+                                    <h2><a href="{{ route("orders.index") }}">Мои заказы</a></h2>
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                         <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
                             <div class="product foo">
@@ -52,6 +54,51 @@
                                 </div>
                             </div>
                         @endif
+
+                        <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
+                            <div class="product foo">
+                                <div class="product__inner">
+                                    <div class="pro__thumb">
+                                        <a href="{{ route("comparison.index") }}">
+                                            <img src="{{ asset("images/my/comp.png") }}">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product__details">
+                                    <h2><a href="{{ route("comparison.index") }}">Сравнение товаров</a></h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
+                            <div class="product foo">
+                                <div class="product__inner">
+                                    <div class="pro__thumb">
+                                        <a href="{{ route("my.profile.index") }}">
+                                            <img src="{{ asset("images/my/profile.png") }}"">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product__details">
+                                    <h2><a href="{{ route("my.profile.index") }}">Мой профиль</a></h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 single__pro col-lg-3 col-sm-4 col-xs-12 cat--4">
+                            <div class="product foo">
+                                <div class="product__inner">
+                                    <div class="pro__thumb">
+                                        <a href="{{ route("wishlist.index") }}">
+                                            <img src="{{ asset("images/my/wish.png") }}">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product__details">
+                                    <h2><a href="{{ route("wishlist.index") }}">Список желаний</a></h2>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-md-3 single__pro col-lg-3 col-sm-4 col-xs-12 cat--2">
                             <div class="product foo">
