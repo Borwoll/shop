@@ -20,13 +20,3 @@ class Permissions extends ServiceProvider {
         });
     }
 }
-
-class PermissionServiceProvider extends ServiceProvider {
-    public function boot(Dashboard $dashboard) {
-        $permissions = ItemPermission::group('Модули')
-            ->addPermission('analytics', 'Access to data analytics')
-            ->addPermission('monitor', 'Access to the system monitor');
-
-        $dashboard->registerPermissions($permissions);
-    }
-}

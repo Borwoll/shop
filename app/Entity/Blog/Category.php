@@ -34,13 +34,11 @@ class Category extends Model
         ]);
     }
 
-    public function getSeoTitle(): string
-    {
+    public function getSeoTitle(): string {
         return $this->title ?? $this->name;
     }
 
-    public function posts()
-    {
+    public function posts() {
         return $this->hasMany(Post::class, 'category_id', 'id');
     }
 }

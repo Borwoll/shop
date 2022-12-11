@@ -4,7 +4,6 @@
         <div class="container">
             <div class="htc__product__container">
                 <div class="row">
-                    @include ('blog.posts._other')
                     <div class="product__list another-product-style">
                         <div class="col-lg-8">
                             <div class="blog_left_sidebar">

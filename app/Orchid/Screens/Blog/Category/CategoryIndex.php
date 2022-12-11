@@ -22,9 +22,15 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\DropDown;
 
 use App\Entity\Blog\Category;
+use App\UseCases\Admin\Blog\CategoryManageService;
 
-class CategoryIndex extends Screen
-{
+class CategoryIndex extends Screen {
+    private $service;
+
+    public function __construct(CategoryManageService $service) {
+        $this->service = $service;
+    }
+
     public function query(): iterable {
         return [
             'categories' => Category::get(),
@@ -49,7 +55,7 @@ class CategoryIndex extends Screen
         return [
             Link::make(__('Добавить'))
                 ->icon('plus')
-                ->route('platform.systems.users.create'),
+                ->route('platform.systems.blog.category.create'),
         ];
     }
 
@@ -60,8 +66,6 @@ class CategoryIndex extends Screen
                 TD::make('slug', 'Уникальное имя'),
                 TD::make('title', 'Заголовок'),
                 TD::make('description', 'Описание'),
-                TD::make('_lft', 'LFT'),
-                TD::make('_rgt', 'RGT'),
                 TD::make('parent_id', 'ID родителя'),
                 TD::make(__('Действия'))
                 ->align(TD::ALIGN_CENTER)
@@ -69,40 +73,79 @@ class CategoryIndex extends Screen
                 ->render(fn (Category $category) => DropDown::make()
                     ->icon('options-vertical')
                     ->list([
+                        Button::make(__(''))
+                            ->icon('arrow-up-circle')
+                            ->method('first', [
+                                'id' => $category->id,
+                            ]),
+
+                        Button::make(__(''))
+                            ->icon('arrow-up')
+                            ->method('up', [
+                                'id' => $category->id,
+                            ]),
+
+                        Button::make(__(''))
+                            ->icon('arrow-down')
+                            ->method('down', [
+                                'id' => $category->id,
+                            ]),
+
+                        Button::make(__(''))
+                            ->icon('arrow-down-circle')
+                            ->method('last', [
+                                'id' => $category->id,
+                            ]),
+
                         Link::make(__('Редактировать'))
-                            ->route('platform.systems.users.edit', $category->id)
+                            ->route('platform.systems.blog.category.edit', $category->id)
                             ->icon('pencil'),
 
                         Button::make(__('Удалить'))
-                            ->route('platform.systems.users.edit', $category->id)
-                            ->icon('trash'),
+                            ->icon('trash')
+                            ->method('destroy', [
+                                'id' => $category->id,
+                            ]),
                     ])),
             ])
         ];
     }
 
-    public function asyncGetUser(User $user): iterable {
-        return [
-            'user' => $user,
-        ];
+    public function destroy(Request $request) {
+        $category = Category::findOrFail($request->get('id'));
+        $this->service->remove($category);
+        return redirect()->route('platform.systems.blog.category');
     }
 
-    public function saveUser(Request $request, User $user): void {
-        $request->validate([
-            'user.email' => [
-                'required',
-                Rule::unique(User::class, 'email')->ignore($user),
-            ],
-        ]);
+    public function first(Request $request) {
+        $category = Category::findOrFail($request->get('id'));
+        $first = $this->service->getSiblings($category);
+        if ($first)
+            $this->service->first($category, $first);
 
-        $user->fill($request->input('user'))->save();
-
-        Toast::info(__('Пользователь был сохранен.'));
+        return redirect()->route('platform.systems.blog.category');
     }
 
-    public function remove(Request $request): void {
-        User::findOrFail($request->get('id'))->delete();
+    public function up(Request $request) {
+        $category = Category::findOrFail($request->get('id'));
+        $this->service->up($category);
 
-        Toast::info(__('Пользователь был удален'));
+        return redirect()->route('platform.systems.blog.category');
+    }
+
+    public function down(Request $request) {
+        $category = Category::findOrFail($request->get('id'));
+        $this->service->down($category);
+
+        return redirect()->route('platform.systems.blog.category');
+    }
+
+    public function last(Request $request) {
+        $category = Category::findOrFail($request->get('id'));
+        $last = $this->service->getSiblingsDesc($category);
+        if ($last)
+            $this->service->last($category, $last);
+
+        return redirect()->route('platform.systems.blog.category');
     }
 }

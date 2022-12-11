@@ -5,16 +5,17 @@ namespace App\Entity\Blog;
 use App\Entity\Blog\Post\Post;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class Comment extends Model
-{
+class Comment extends Model {
+    use AsSource;
+
     protected $table = 'blog_post_comments';
     protected $fillable = [
         'author_id', 'post_id', 'parent_id', 'text', 'active'
     ];
 
-    public static function new($parentId, $postId, $authorId, $text): self
-    {
+    public static function new($parentId, $postId, $authorId, $text): self {
         return static::create([
             'author_id' => $authorId,
             'post_id' => $postId,
@@ -24,8 +25,7 @@ class Comment extends Model
         ]);
     }
 
-    public function edit($parentId, $postId, $text): void
-    {
+    public function edit($parentId, $postId, $text): void {
         $this->update([
             'parent_id' => $parentId,
             'post_id' => $postId,
@@ -33,57 +33,47 @@ class Comment extends Model
         ]);
     }
 
-    public function activate(): void
-    {
+    public function activate(): void {
         $this->update([
             'active' => true
         ]);
     }
 
-    public function draft(): void
-    {
+    public function draft(): void {
         $this->update([
             'active' => false
         ]);
     }
 
-    public function isActive(): bool
-    {
+    public function isActive(): bool {
         return $this->active == true;
     }
 
-    public function isDraft(): bool
-    {
+    public function isDraft(): bool {
         return $this->active == false;
     }
 
-    public function isIdEqualTo($id): bool
-    {
+    public function isIdEqualTo($id): bool {
         return $this->id == $id;
     }
 
-    public function isChildOf($id): bool
-    {
+    public function isChildOf($id): bool {
         return $this->parent_id == $id;
     }
 
-    public function post()
-    {
+    public function post() {
         return $this->belongsTo(Post::class, 'post_id', 'id');
     }
 
-    public function author()
-    {
+    public function author() {
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 
-    public function parent()
-    {
+    public function parent() {
         return $this->belongsTo(static::class, 'parent_id', 'id');
     }
 
-    public function children()
-    {
+    public function children() {
         return $this->hasMany(static::class, 'parent_id', 'id');
     }
 }

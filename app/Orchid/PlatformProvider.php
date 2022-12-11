@@ -31,42 +31,37 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('Навигация'),
 
             Menu::make(__('Категории'))
-                ->icon('user')
+                ->icon('number-list')
                 ->route('platform.systems.blog.category')
                 ->permission('platform.systems.blog.category')
                 ->title(__('Блог')),
 
-            // Menu::make(__('Комментарии'))
-            //     ->icon('user')
-            //     ->route('platform.systems.blog.comments')
-            //     ->permission('platform.systems.blog.comments'),
+            Menu::make(__('Комментарии'))
+                ->icon('bubble')
+                ->route('platform.systems.blog.comments')
+                ->permission('platform.systems.blog.comments'),
 
-            // Menu::make(__('Посты'))
-            //     ->icon('user')
-            //     ->route('platform.systems.blog.posts')
-            //     ->permission('platform.systems.blog.posts'),
-
-            // Menu::make(__('Теги'))
-            //     ->icon('user')
-            //     ->route('platform.systems.blog.tags')
-            //     ->permission('platform.systems.blog.tags'),
+            Menu::make(__('Посты'))
+                ->icon('docs')
+                ->route('platform.systems.blog.posts')
+                ->permission('platform.systems.blog.posts'),
                 
-            // Menu::make(__('Регионы'))
-            //     ->icon('user')
-            //     ->route('platform.systems.location.regions')
-            //     ->permission('platform.systems.location.regions')
-            //     ->title(__('Местоположение')),
+            Menu::make(__('Регионы'))
+                ->icon('location-pin')
+                ->route('platform.systems.location.regions')
+                ->permission('platform.systems.location.regions')
+                ->title(__('Местоположение')),
 
-            // Menu::make(__('Бренды'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.brands')
-            //     ->permission('platform.systems.shop.brands')
-            //     ->title(__('Магазин')),
+            Menu::make(__('Бренды'))
+                ->icon('barcode')
+                ->route('platform.systems.shop.brands')
+                ->permission('platform.systems.shop.brands')
+                ->title(__('Магазин')),
 
-            // Menu::make(__('Категории'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.category')
-            //     ->permission('platform.systems.shop.category'),
+            Menu::make(__('Категории'))
+                ->icon('user')
+                ->route('platform.systems.shop.categories')
+                ->permission('platform.systems.shop.category'),
 
             // Menu::make(__('Характеристики'))
             //     ->icon('user')
@@ -126,8 +121,7 @@ class PlatformProvider extends OrchidServiceProvider
             ItemPermission::group(__('Блог'))
                 ->addPermission('platform.systems.blog.category', __('Категории'))
                 ->addPermission('platform.systems.blog.comments', __('Комментарии'))
-                ->addPermission('platform.systems.blog.posts', __('Посты'))
-                ->addPermission('platform.systems.blog.tags', __('Теги')),
+                ->addPermission('platform.systems.blog.posts', __('Посты')),
 
             ItemPermission::group(__('Местоположение'))
                 ->addPermission('platform.systems.location.regions', __('Регионы')),

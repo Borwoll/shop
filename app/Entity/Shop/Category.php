@@ -5,9 +5,10 @@ namespace App\Entity\Shop;
 use App\Entity\Shop\Product\Product;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
+use Orchid\Screen\AsSource;
 
-class Category extends Model
-{
+class Category extends Model {
+    use AsSource;
     use NodeTrait;
 
     public $timestamps = false;
@@ -32,13 +33,11 @@ class Category extends Model
         ]);
     }
 
-    public function products()
-    {
+    public function products() {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
-    public function getSeoTitle(): string
-    {
+    public function getSeoTitle(): string {
         return $this->title ?? $this->name;
     }
 }

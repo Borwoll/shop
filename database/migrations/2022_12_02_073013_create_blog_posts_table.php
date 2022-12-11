@@ -24,15 +24,9 @@ return new class extends Migration
             $table->text('description');
             $table->text('content');
             $table->string('status');
-            $table->integer('views');
-            $table->integer('comments');
-            $table->integer('likes');
-        });
-
-        Schema::create('blog_tag_assignments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('post_id')->references('id')->on('blog_posts')->onDelete('CASCADE');
-            $table->integer('tag_id')->references('id')->on('blog_tags')->onDelete('CASCADE');
+            $table->integer('views')->default(0);
+            $table->integer('comments')->default(0);
+            $table->integer('likes')->default(0);
         });
 
         Schema::create('blog_post_comments', function (Blueprint $table) {
@@ -61,7 +55,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('blog_post_likes');
         Schema::dropIfExists('blog_post_comments');
-        Schema::dropIfExists('blog_tag_assignments');
         Schema::dropIfExists('blog_posts');
     }
 };

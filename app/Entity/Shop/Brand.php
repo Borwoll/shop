@@ -4,9 +4,10 @@ namespace App\Entity\Shop;
 
 use App\Entity\Shop\Product\Product;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class Brand extends Model
-{
+class Brand extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_brands';

@@ -4,7 +4,6 @@
         <div class="container">
             <div class="htc__product__container">
                 <div class="row">
-                    @include ('blog.posts._other')
                     <div class="product__list another-product-style">
                         @foreach ($category->posts as $post)
                             <article class="row blog_item">

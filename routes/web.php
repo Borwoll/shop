@@ -46,7 +46,6 @@ Route::group(
         Route::get('/popular', 'App\Http\Controllers\Blog\PostsController@popular')->name('posts.popular');
 
         Route::get('/category/{name}', 'App\Http\Controllers\Blog\PostsController@category')->name('posts.category');
-        Route::get('/tag/{name}', 'App\Http\Controllers\Blog\PostsController@tag')->name('posts.tag');
 
         Route::get('/{id}/{slug}', 'App\Http\Controllers\Blog\PostsController@single')->name('posts.single');
 

@@ -2,13 +2,6 @@
     <article class="row blog_item">
         <div class="col-md-3">
             <div class="blog_info text-right">
-                <div class="post_tag">
-                    @foreach ($post->tags as $tag)
-                        <a href="{{ route('blog.posts.tag', $tag->slug) }}">
-                            {{ $tag->name }}@if (!$loop->last), @endif
-                        </a>
-                    @endforeach
-                </div>
                 <ul class="blog_meta list">
                     <li><a href="javascript:void(0);">{{ $post->author ? $post->author->name : 'None' }}<i class="lnr lnr-user"></i></a></li>
                     <li><a href="javascript:void(0);">{{ $post->created_at }}<i class="lnr lnr-calendar-full"></i></a></li>

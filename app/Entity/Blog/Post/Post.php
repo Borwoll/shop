@@ -4,14 +4,15 @@ namespace App\Entity\Blog\Post;
 
 use App\Entity\Blog\Category;
 use App\Entity\Blog\Comment;
-use App\Entity\Blog\Tag;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Orchid\Screen\AsSource;
 
 class Post extends Model
 {
+    use AsSource;
     public const STATUS_ACTIVE = 'Active';
     public const STATUS_DRAFT = 'Draft';
 
@@ -69,24 +70,6 @@ class Post extends Model
     public function commentsList()
     {
         return $this->hasMany(Comment::class, 'post_id', 'id')->where('parent_id', '=', null);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'blog_tag_assignments');
-    }
-
-    public function hasTag($tagId): bool
-    {
-        $tags = $this->tags;
-
-        foreach ($tags as $tag) {
-            if ($tag->id == $tagId) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public function scopeActive(Builder $query)
