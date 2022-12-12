@@ -19,8 +19,8 @@ class OrdersEditLayout extends Rows {
             
             Input::make('shop_orders.customer_data_id')
                 ->type('number')
-                ->title(__('ID исполнителя'))
-                ->placeholder(__('ID исполнителя')),
+                ->title(__('ID заказчика'))
+                ->placeholder(__('ID заказчика')),
 
             Input::make('shop_orders.delivery_data_id')
                 ->type('number')

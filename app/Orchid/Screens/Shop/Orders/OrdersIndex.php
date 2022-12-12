@@ -59,7 +59,7 @@ class OrdersIndex extends Screen {
         return [
             Layout::table('orders', [
                 TD::make('user_id', 'ID пользователя'),
-                TD::make('customer_data_id', 'ID исполнителя'),
+                TD::make('customer_data_id', 'ID заказчика'),
                 TD::make('delivery_data_id', 'ID доставки'),
                 TD::make('delivery_method_id', 'ID метода доставки'),
                 TD::make('delivery_method_name', 'Название метода доставки'),
@@ -99,13 +99,24 @@ class OrdersIndex extends Screen {
                             ->method('cancel', [
                                 'id' => $orders->id,
                             ]),
+                ])),
+
+                TD::make(__('Действия'))
+                ->align(TD::ALIGN_CENTER)
+                ->width('100px')
+                ->render(fn (Order $orders) => DropDown::make()
+                    ->icon('options-vertical')
+                    ->list([
+                        Link::make(__('Подробнее'))
+                            ->route('platform.systems.shop.orders.show', $orders->id)
+                            ->icon('eye'),
 
                         Button::make(__('Удалить'))
                             ->icon('trash')
                             ->method('destroy', [
                                 'id' => $orders->id,
                             ]),
-                    ])),
+                ])),
             ])
         ];
     }

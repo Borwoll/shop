@@ -52,10 +52,13 @@ use App\Orchid\Screens\Shop\Products\ProductsCharacteristicCreate;
 use App\Orchid\Screens\Shop\Products\ProductsCharacteristicEdit;
 
 use App\Orchid\Screens\Shop\Orders\OrdersIndex;
+use App\Orchid\Screens\Shop\Orders\OrdersShow;
 
 use App\Orchid\Screens\Shop\Characteristics\CharacteristicsIndex;
 use App\Orchid\Screens\Shop\Characteristics\CharacteristicsEdit;
 use App\Orchid\Screens\Shop\Characteristics\CharacteristicsCreate;
+use App\Orchid\Screens\Shop\Characteristics\VariantEdit;
+use App\Orchid\Screens\Shop\Characteristics\VariantCreate;
 
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
@@ -275,11 +278,29 @@ Route::screen('shop/characteristics/create', CharacteristicsCreate::class)
     ->parent('platform.systems.shop.characteristics')
     ->push(__('Создать'), route('platform.systems.shop.characteristics.create')));
 
+Route::screen('shop/characteristics/variant/{variant}/edit', VariantEdit::class)
+    ->name('platform.systems.shop.variant.edit')
+    ->breadcrumbs(fn (Trail $trail, $variant) => $trail
+    ->parent('platform.systems.shop.characteristics')
+    ->push(__('Редактировать'), route('platform.systems.shop.variant.edit', $variant)));
+
+Route::screen('shop/characteristics/variant/create', VariantCreate::class)
+    ->name('platform.systems.shop.variant.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.systems.shop.characteristics')
+    ->push(__('Создать'), route('platform.systems.shop.variant.create')));
+
 Route::screen('shop/orders', OrdersIndex::class)
     ->name('platform.systems.shop.orders')
     ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.main')
     ->push(__('Магазин / Заказы'), route('platform.systems.shop.orders')));
+    
+Route::screen('shop/orders/{orders}/show', OrdersShow::class)
+    ->name('platform.systems.shop.orders.show')
+    ->breadcrumbs(fn (Trail $trail, $orders) => $trail
+    ->parent('platform.systems.shop.orders')
+    ->push(__('Подробнее'), route('platform.systems.shop.orders.show', $orders)));
 
 Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')

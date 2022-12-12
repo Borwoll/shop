@@ -22,18 +22,24 @@ use Orchid\Screen\TD;
 use Orchid\Screen\Actions\DropDown;
 
 use App\Entity\Shop\Characteristic\Characteristic;
+use App\Entity\Shop\Characteristic\Variant;
+
 use App\UseCases\Admin\Shop\Characteristic\CharacteristicManageService;
+use App\UseCases\Admin\Shop\Characteristic\VariantManageService;
 
 class CharacteristicsIndex extends Screen {
-    private $service;
+    private $service_characteristic;
+    private $service_variant;
 
-    public function __construct(CharacteristicManageService $service) {
-        $this->service = $service;
+    public function __construct(CharacteristicManageService $service_characteristic, VariantManageService $service_variant) {
+        $this->service_characteristic = $service_characteristic;
+        $this->service_variant = $service_variant;
     }
 
     public function query(): iterable {
         return [
             'characteristics' => Characteristic::get(),
+            'variants' => Variant::get(),
         ];
     }
 
@@ -53,9 +59,12 @@ class CharacteristicsIndex extends Screen {
 
     public function commandBar(): iterable {
         return [
-            Link::make(__('Добавить'))
+            Link::make(__('Добавить характеристику'))
                 ->icon('plus')
                 ->route('platform.systems.shop.characteristics.create'),
+            Link::make(__('Добавить вариант'))
+                ->icon('plus')
+                ->route('platform.systems.shop.variant.create'),
         ];
     }
 
@@ -84,13 +93,41 @@ class CharacteristicsIndex extends Screen {
                                 'id' => $characteristics->id,
                             ]),
                     ])),
+            ]),
+
+            Layout::table('variants', [
+                TD::make('characteristic_id', 'ID характеристики'),
+                TD::make('name', 'Название'),
+
+                TD::make(__('Действия'))
+                ->align(TD::ALIGN_CENTER)
+                ->width('100px')
+                ->render(fn (Variant $variant) => DropDown::make()
+                    ->icon('options-vertical')
+                    ->list([
+                        Link::make(__('Редактировать'))
+                            ->route('platform.systems.shop.variant.edit', $variant->id)
+                            ->icon('pencil'),
+
+                        Button::make(__('Удалить'))
+                            ->icon('trash')
+                            ->method('destroy_variant', [
+                                'id' => $variant->id,
+                                'id' => $variant->id,
+                            ]),
+                    ])),
             ])
         ];
     }
 
     public function destroy(Request $request) {
         $characteristics = Characteristic::findOrFail($request->get('id'));
-        $this->service->remove($characteristics);
+        $this->service_characteristic->remove($characteristics);
+        return redirect()->route('platform.systems.shop.characteristics');
+    }
+
+    public function destroy_variant(Variant $variant) {
+        $this->service_variant->remove($variant);
         return redirect()->route('platform.systems.shop.characteristics');
     }
 }
