@@ -5,9 +5,11 @@ namespace App\Entity\Shop;
 use App\Entity\Shop\Product\Product;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
 class Comment extends Model
 {
+    use AsSource;
     protected $table = 'shop_product_comments';
     protected $fillable = [
         'author_id', 'product_id', 'parent_id', 'text', 'active'

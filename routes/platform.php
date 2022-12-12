@@ -33,6 +33,9 @@ use App\Orchid\Screens\Shop\Categories\CategoriesIndex;
 use App\Orchid\Screens\Shop\Categories\CategoriesEdit;
 use App\Orchid\Screens\Shop\Categories\CategoriesCreate;
 
+use App\Orchid\Screens\Shop\Comments\ShopCommentsIndex;
+use App\Orchid\Screens\Shop\Comments\ShopCommentsEdit;
+
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -149,6 +152,18 @@ Route::screen('shop/categories/create', CategoriesCreate::class)
     ->parent('platform.systems.shop.categories')
     ->push(__('Создать'), route('platform.systems.shop.categories.create')));
 
+Route::screen('shop/comments', ShopCommentsIndex::class)
+    ->name('platform.systems.shop.comments')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Магазин / Комментарии'), route('platform.systems.shop.comments')));
+
+Route::screen('shop/comments/{comments}/edit', ShopCommentsEdit::class)
+    ->name('platform.systems.shop.comments.edit')
+    ->breadcrumbs(fn (Trail $trail, $comments) => $trail
+    ->parent('platform.systems.shop.comments')
+    ->push(__('Редактировать'), route('platform.systems.shop.comments.edit', $comments)));
+    
 Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')
     ->breadcrumbs(fn (Trail $trail, $user) => $trail
