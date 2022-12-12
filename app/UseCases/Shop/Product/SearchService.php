@@ -10,24 +10,19 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchService
 {
-    public function search(SearchRequest $request, int $perPage, int $page): LengthAwarePaginator
-    {
+    public function search(SearchRequest $request, int $perPage, int $page): LengthAwarePaginator {
         $query = Product::orderBy('id', 'DESC')
             ->where('status', Product::STATUS_ACTIVE);
 
-        if ($request->has('q')) {
-            $query->where('title', $request->get('q'));
-        }
-
-        if ($request->has('title')) {
+        if ($request->get('title') != '') {
             $query->where('title', $request->get('title'));
         }
 
-        if ($request->has('weight')) {
+        if ($request->get('weight') != '') {
             $query->where('weight', $request->get('weight'));
         }
 
-        if ($request->has('availability')) {
+        if ($request->get('availability') != '') {
             $query->where('availability', $request->get('availability'));
         }
 

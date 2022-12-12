@@ -22,7 +22,6 @@ class SearchController extends Controller
             10,
             $request->get('page', 1)
         );
-
         return view('shop.products.search', compact('products'));
     }
 }

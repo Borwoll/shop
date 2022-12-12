@@ -7,7 +7,7 @@
                         <div class="product__inner">
                             <div class="pro__thumb">
                                 <a href="#">
-                                    <img src="{{ $product->photos()->exists() ? $product->photos()->first()->getUrl() : '' }}" alt="product images">
+                                    <img src="{{ asset('images/product/2.png') }} " alt="product images">
                                 </a>
                             </div>
                             <div class="product__hover__info">

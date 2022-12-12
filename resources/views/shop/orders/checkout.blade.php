@@ -89,7 +89,7 @@
                                                     <td class="product-name">
                                                         <div class="media">
                                                             <div class="d-flex">
-                                                                <img src="{{ $cartItem->product->getImageUrl($cartItem->product->photos()->exists() ? $cartItem->product->photos()->first()->photo : '') }}" alt="" width="60px" height="60px">
+                                                                <img src="{{ asset('images/product/sm-img/1.jpg') }}" alt="" width="60px" height="60px">
                                                             </div>
                                                             <div class="media-body">
                                                                 <p>{{ $cartItem->product->title }}</p>

@@ -1,30 +1,36 @@
-<div class="comments-area" id="comments">
-    <h4>{{ $post->comments }} Comments</h4>
-
-    @foreach ($post->commentsList as $comment)
-        @include ('blog.posts._comment', $comment)
-    @endforeach
+<div class="our-blog-comment mt--20">
+    <div class="blog-comment-inner" id="comments">
+        <h2 class="section-title-2">Комментарии ({{ $post->comments }})</h2>
+        @foreach ($post->commentsList as $comment)
+            @include ('blog.posts._comment', $comment)
+        @endforeach
+    </div>
 </div>
 
 @guest
-    <p>You must be logged in to leave a comment</p>
+    <p>Вы должны авторизоваться, чтобы оставить комменатрийt</p>
 @else
-    <div class="comment-form" id="reply-block">
-        <h4>Leave a Reply</h4>
-        <form method="POST" action="{{ route('blog.posts.comment', $post) }}">
-            @csrf
+    <div class="our-reply-form-area mt--20">
+        <h2 class="section-title-2">Оставить комментарий</h2>
+        <div class="reply-form-inner mt--40">
+            <form method="POST" action="{{ route('blog.posts.comment', $post) }}" id="send_comment_form">
+                @csrf
 
-            <div class="form-group">
-                <input type="hidden" id="parent" name="parent">
-                <textarea class="form-control mb-10" rows="5" name="text" id="text" placeholder="Write Your message.."></textarea>
-            </div>
+                <div class="reply-form-box">
+                    <input type="hidden" id="parent" name="parent">
+                    <textarea name="text" id="text" placeholder="Напишите ваше сообщение.."></textarea>
+                </div>
 
-            <input type="submit" class="primary-btn submit_btn" value="Post Comment">
-        </form>
+                <div class="blog__details__btn">
+                    <a class="htc__btn btn--gray" href="#" onclick="document.getElementById('send_comment_form').submit()">Отправить</a>
+                </div>
+            </form>
+        </div>
     </div>
+    <br>
 @endguest
 
-@section ('script')
+@section ('scripts')
     <script>
         $(document).on("click", "#comments .reply-btn", function () {
             let link = $(this);

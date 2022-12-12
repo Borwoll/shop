@@ -1,47 +1,53 @@
 @extends('layouts.app')
 @section('content')
-    <section class="htc__product__area ptb--130 bg__white">
-        <div class="container">
-            <div class="htc__product__container">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
                 <div class="row">
-                    <div class="product__list another-product-style">
-                        <div class="col-lg-12">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="{{ $post->getImageUrl() }}" alt="">
-                            </div>
+                    <div class="col-xs-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Подробная информация о посте</h2>
                         </div>
-                        <div class="col-lg-3  col-md-3">
-                            <div class="blog_info text-right">
-                                <div class="post_tag">
-                                    @foreach ($post->tags as $tag)
-                                        <a href="{{ route('blog.posts.tag', $tag->name) }}">
-                                            {{ $tag->name }}@if (!$loop->last), @endif
-                                        </a>
-                                    @endforeach
-                                </div>
-                                <ul class="blog_meta list">
-                                    <li><a href="javascript:void(0);">{{ $post->author ? $post->author->name : 'None' }}<i class="lnr lnr-user"></i></a></li>
-                                    <li><a href="javascript:void(0);">{{ $post->created_at }}<i class="lnr lnr-calendar-full"></i></a></li>
-                                    <li><a href="javascript:void(0);">{{ $post->views }} Views<i class="lnr lnr-eye"></i></a></li>
-                                    <li><a href="#comments">{{ $post->comments }} Comments<i class="lnr lnr-bubble"></i></a></li>
-                                    <li><a href="{{ route('blog.posts.category', ['slug' => $post->category->slug]) }}">{{ $post->category->name }} <i class="lnr lnr-cloud"></i></a></li>
-                                    <li class="like" data-id="{{ $post->id }}"><a href="javascript:void(0);"><span id="likesCount_{{$post->id}}">{{ $post->likes }}</span> Likes<i class="lnr lnr-heart"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9 blog_details">
-                            <h2>{{ $post->title }}</h2>
-                            <p class="excert">
-                                {{ Str::limit($post->description, 50) }}
-                            </p>
-                        </div>
-                        <div class="col-lg-12">
-                            {!! $post->content !!}
-                        </div>
-
-                        @include ('blog.posts._comments', $post)
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="blog-details-wrap bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                    <div class="blod-details-right-sidebar">
                         @include ('blog.posts._sidebar')
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                    <div class="blog-details-left-sidebar mrg-blog">
+                        <div class="blog-details-top">
+                            <!--Start Blog Thumb -->
+                            <div class="blog-details-thumb-wrap">
+                                <div class="blog-details-thumb">
+                                    <img src="{{ asset('images/blog/big-images/1.jpg') }}" alt="blog images">
+                                </div>
+                            </div>
+                            <h2>{{ $post->title }}</h2>
+                            <div class="blog-admin-and-comment">
+                                <p>Автор: <a href="#">{{ $post->author ? $post->author->name : 'отсутствует' }}</a></p>
+                                <p class="separator">|</p>
+                                <p>Комменатрий: {{ $post->comments }}</p>
+                                <p class="separator">|</p>
+                                <p>Лайков: {{ $post->likes }}</p>
+                                <p class="separator">|</p>
+                                <p>Просмотров: {{ $post->views }}</p>
+                                <p class="separator">|</p>
+                                <p>Дата выхода статьи: {{ $post->created_at }}</p>
+                            </div>
+                            <div class="blog-details-pra">
+                                <p>{{ $post->content }}</p>
+                            </div>
+
+                            @include ('blog.posts._comments', $post)
+                        </div>
                     </div>
                 </div>
             </div>

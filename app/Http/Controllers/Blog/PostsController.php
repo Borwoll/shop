@@ -39,26 +39,9 @@ class PostsController extends Controller
         return view('blog.posts.all', compact('posts'));
     }
 
-    public function best()
-    {
-        $query = $this->postService->getBestPosts();
-        $posts = $query->paginate(6);
-
-        return view('blog.posts.best', compact('posts'));
-    }
-
-    public function popular()
-    {
-        $query = $this->postService->getPopularPosts();
-        $posts = $query->paginate(6);
-
-        return view('blog.posts.popular', compact('posts'));
-    }
-
     public function category($slug)
     {
         $category = $this->categoryService->findCategoryBySlug($slug);
-
         return view('blog.posts.category', compact('category'));
     }
 

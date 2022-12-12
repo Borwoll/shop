@@ -1,6 +1,6 @@
 <div class="product-sidebar">
     <div class="sidebar-filter mt-50">
-        <div class="top-filter-head">Фильтры для товаров</div>
+        <h4 class="section-title-4">Фильтры</h4>
         <form action="{{ route('shop.products.search') }}" method="GET">
             <div class="product-search">
                 <div class="common-filter">
@@ -16,8 +16,8 @@
                 <div class="common-filter">
                     <div>Доступность</div>
                     <select name="availability" class="form-control">
-                        <option value="0">Нет в наличии</option>
-                        <option value="1">В наличии</option>
+                        <option value="out-of-stock">Нет в наличии</option>
+                        <option value="in-stock" selected>В наличии</option>
                     </select>
                 </div>
 

@@ -1,14 +1,12 @@
-<aside class="single_sidebar_widget post_category_widget">
-    <h4 class="widget_title">Категории сообщений</h4>
-    <ul class="list cat-list">
+<div class="our-category-area mt--60">
+    <h2 class="section-title-2">КАТЕГОРИИ</h2>
+    <ul class="categore-menu">
         @foreach ($categories as $category)
             <li>
-                <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}" class="d-flex justify-content-between">
-                    <p>@for ($i = 0; $i < $category->depth; $i++) -- @endfor{{ $category->name }}</p>
-                    <p>{{ $category->posts()->count() }}</p>
+                <a href="{{ route('blog.posts.category', ['slug' => $category->slug]) }}">
+                    <i class="zmdi zmdi-caret-right"></i>@for ($i = 0; $i < $category->depth; $i++) -- @endfor{{ $category->name }} <span>{{ $category->posts()->count() }}</span>
                 </a>
             </li>
         @endforeach
     </ul>
-    <div class="br"></div>
-</aside>
+</div>

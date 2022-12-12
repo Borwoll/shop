@@ -42,15 +42,9 @@ Route::group(
     ],
     function () {
         Route::get('/all', 'App\Http\Controllers\Blog\PostsController@all')->name('posts.all');
-        Route::get('/best', 'App\Http\Controllers\Blog\PostsController@best')->name('posts.best');
-        Route::get('/popular', 'App\Http\Controllers\Blog\PostsController@popular')->name('posts.popular');
-
-        Route::get('/category/{name}', 'App\Http\Controllers\Blog\PostsController@category')->name('posts.category');
-
+        Route::get('/category/{slug}', 'App\Http\Controllers\Blog\PostsController@category')->name('posts.category');
         Route::get('/{id}/{slug}', 'App\Http\Controllers\Blog\PostsController@single')->name('posts.single');
-
         Route::get('/search', 'App\Http\Controllers\Blog\PostsController@search')->name('posts.search');
-
         Route::post('/like', 'App\Http\Controllers\Blog\PostsController@like')->name('posts.like');
         Route::post('/{post}/comment/create', 'App\Http\Controllers\Blog\PostsController@comment')->name('posts.comment');
     }

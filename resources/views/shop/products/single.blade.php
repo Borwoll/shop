@@ -23,7 +23,7 @@
                         <div class="product__details__container product-details-5">
                             @foreach ($product->photos as $photo)
                                 <div class="scroll-single-product mb--30">
-                                    <img src="{{ $photo->getUrl() }}">
+                                    <img src="{{ asset('images/product/big-img/1.jpg') }}">
                                 </div>
                             @endforeach
                         </div>
@@ -181,6 +181,8 @@
                     cartItemsCount.text(parseInt(count) + parseInt(quantity));
                 }
             });
+
+            window.location.href = "/shop/cart";
         });
     </script>
 
