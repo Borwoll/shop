@@ -3,9 +3,10 @@
 namespace App\Entity\Shop\Order;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class Status extends Model
-{
+class Status extends Model {
+    use AsSource;
     public const NEW = 1;
     public const PAID = 2;
     public const SENT = 3;
@@ -26,39 +27,32 @@ class Status extends Model
         ]);
     }
 
-    public function isNew(): bool
-    {
+    public function isNew(): bool {
         return $this->value == self::NEW;
     }
 
-    public function isPaid(): bool
-    {
+    public function isPaid(): bool {
         return $this->value == self::PAID;
     }
 
-    public function isSent(): bool
-    {
+    public function isSent(): bool {
         return $this->value == self::SENT;
     }
 
-    public function isCompleted(): bool
-    {
+    public function isCompleted(): bool {
         return $this->value == self::COMPLETED;
     }
 
-    public function isCancelled(): bool
-    {
+    public function isCancelled(): bool {
         return $this->value == self::CANCELLED
             || $this->value == self::CANCELLED_BY_CUSTOMER;
     }
 
-    public function isCancelledByCustomer(): bool
-    {
+    public function isCancelledByCustomer(): bool {
         return $this->value == self::CANCELLED_BY_CUSTOMER;
     }
 
-    public function isCancelledByAdmin(): bool
-    {
+    public function isCancelledByAdmin(): bool {
         return $this->value == self::CANCELLED;
     }
 }

@@ -4,9 +4,10 @@ namespace App\Entity\Shop\Order;
 
 use App\Entity\Region;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class DeliveryData extends Model
-{
+class DeliveryData extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_order_delivery_data';
@@ -24,8 +25,7 @@ class DeliveryData extends Model
         ]);
     }
 
-    public function region()
-    {
+    public function region() {
         return $this->belongsTo(Region::class, 'region_id', 'id');
     }
 }

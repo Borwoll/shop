@@ -5,8 +5,6 @@ namespace App\UseCases\Admin\Shop\Product;
 use App\Entity\Shop\Product\Product;
 use App\Http\Requests\Admin\Shop\Product\Product\CreateRequest;
 use App\Http\Requests\Admin\Shop\Product\Product\UpdateRequest;
-use App\Command\Admin\Shop\Product\Product\Create\Command as ProductCreateCommand;
-use App\Command\Admin\Shop\Product\Product\Update\Command as ProductUpdateCommand;
 use App\Command\Admin\Shop\Product\Product\Remove\Command as ProductRemoveCommand;
 use App\Command\Admin\Shop\Product\Product\Activate\Command as ProductActivateCommand;
 use App\Command\Admin\Shop\Product\Product\Draft\Command as ProductDraftCommand;
@@ -21,16 +19,6 @@ use App\UseCases\Service;
 
 class ProductManageService extends Service
 {
-    public function create(CreateRequest $request): void
-    {
-        $this->commandBus->handle(new ProductCreateCommand($request));
-    }
-
-    public function update(UpdateRequest $request, Product $product): void
-    {
-        $this->commandBus->handle(new ProductUpdateCommand($request, $product));
-    }
-
     public function remove(Product $product): void
     {
         $this->commandBus->handle(new ProductRemoveCommand($product));

@@ -4,8 +4,7 @@ namespace App\Entity\Blog\Post;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
-{
+class Like extends Model {
     public $timestamps = false;
 
     protected $table = 'blog_post_likes';

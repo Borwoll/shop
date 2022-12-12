@@ -28,39 +28,4 @@ class OrdersController extends Controller
     {
         return view('admin.shop.orders.show', compact('order'));
     }
-
-    public function cancel(CancelRequest $request, Order $order)
-    {
-        $this->service->cancel($request, $order);
-
-        return redirect()->route('admin.shop.orders.show', compact('order'));
-    }
-
-    public function pay(Order $order)
-    {
-        $this->service->makePaid($order);
-
-        return redirect()->route('admin.shop.orders.show', compact('order'));
-    }
-
-    public function sent(Order $order)
-    {
-        $this->service->makeSent($order);
-
-        return redirect()->route('admin.shop.orders.show', compact('order'));
-    }
-
-    public function complete(Order $order)
-    {
-        $this->service->makeCompleted($order);
-
-        return redirect()->route('admin.shop.orders.show', compact('order'));
-    }
-
-    public function destroy(Order $order)
-    {
-        $this->service->remove($order);
-
-        return redirect()->route('admin.shop.orders.index');
-    }
 }

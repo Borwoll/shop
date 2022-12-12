@@ -4,9 +4,10 @@ namespace App\Entity\Shop\Order;
 
 use App\Entity\Shop\Product\Product;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class OrderItem extends Model
-{
+class OrderItem extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_order_items';
@@ -31,13 +32,11 @@ class OrderItem extends Model
         ]);
     }
 
-    public function getCost(): int
-    {
+    public function getCost(): int {
         return $this->product_price * $this->product_quantity;
     }
 
-    public function product()
-    {
+    public function product() {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }

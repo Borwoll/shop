@@ -5,9 +5,10 @@ namespace App\Entity\Shop;
 use App\Entity\Shop\Product\Product;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class Review extends Model
-{
+class Review extends Model {
+    use AsSource;
     protected $table = 'shop_product_reviews';
     protected $fillable = [
         'author_id', 'product_id', 'rating', 'text'
@@ -26,13 +27,11 @@ class Review extends Model
         ]);
     }
 
-    public function product()
-    {
+    public function product() {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
-    public function author()
-    {
+    public function author() {
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 }

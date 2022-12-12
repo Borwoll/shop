@@ -125,23 +125,23 @@
                                 @foreach ($order->statuses as $status)
                                     <tr>
                                         <td>
-                                            @if ($order->isPaid())
+                                            @if ($status->isPaid())
                                                 <span class="badge badge-primary">Оплачено</span>
                                             @endif
 
-                                            @if ($order->isSent())
+                                            @if ($status->isSent())
                                                 <span class="badge badge-primary">Отправлено</span>
                                             @endif
 
-                                            @if ($order->isCompleted())
+                                            @if ($status->isCompleted())
                                                 <span class="badge badge-success">Завершенный</span>
                                             @endif
 
-                                            @if ($order->isCancelledByCustomer())
+                                            @if ($status->isCancelledByCustomer())
                                                 <span class="badge badge-danger">Отменено клиентом</span>
                                             @endif
 
-                                            @if ($order->isCancelledByAdmin())
+                                            @if ($status->isCancelledByAdmin())
                                                 <span class="badge badge-danger">Отменено администратором</span>
                                             @endif
                                         </td>

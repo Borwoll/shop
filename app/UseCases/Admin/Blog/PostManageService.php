@@ -6,10 +6,6 @@ use App\Entity\Blog\Post\Post;
 use App\Query\Blog\Category\Find\FindCategoriesTreeQuery;
 use App\Query\Blog\Post\Find\FindPostsQuery;
 use App\Query\Blog\Post\GetPostStatusesQuery;
-use App\Http\Requests\Admin\Blog\Post\CreateRequest;
-use App\Http\Requests\Admin\Blog\Post\UpdateRequest;
-use App\Command\Admin\Blog\Post\Create\Command as PostCreateCommand;
-use App\Command\Admin\Blog\Post\Update\Command as PostUpdateCommand;
 use App\Command\Admin\Blog\Post\Remove\Command as PostRemoveCommand;
 use App\Command\Admin\Blog\Post\Verify\Command as PostVerifyCommand;
 use App\Command\Admin\Blog\Post\Draft\Command as PostDraftCommand;
@@ -18,16 +14,6 @@ use App\UseCases\Service;
 
 class PostManageService extends Service
 {
-    public function create(CreateRequest $request, int $userId): void
-    {
-        $postId = $this->commandBus->handle(new PostCreateCommand($request, $userId));
-    }
-
-    public function update(UpdateRequest $request, Post $post): void
-    {
-        $this->commandBus->handle(new PostUpdateCommand($request, $post));
-    }
-
     public function removePhoto(Post $post): void
     {
         $this->commandBus->handle(new PostUploadPhotoCommand($post));

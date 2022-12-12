@@ -6,9 +6,10 @@ use App\Entity\Shop\Characteristic\Variant;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Entity\Shop\Characteristic\Characteristic as ShopCharacteristic;
+use Orchid\Screen\AsSource;
 
-class Characteristic extends Model
-{
+class Characteristic extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_product_characteristics';
@@ -27,20 +28,17 @@ class Characteristic extends Model
         ]);
     }
 
-    public function addVariant(int $variantId): void
-    {
+    public function addVariant(int $variantId): void {
         $this->update([
             'variant_id' => $variantId
         ]);
     }
 
-    public function characteristic()
-    {
+    public function characteristic() {
         return $this->belongsTo(ShopCharacteristic::class, 'characteristic_id', 'id');
     }
 
-    public function variant()
-    {
+    public function variant() {
         return $this->belongsTo(Variant::class, 'variant_id', 'id');
     }
 }

@@ -3,9 +3,10 @@
 namespace App\Entity\Shop\Order;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class CustomerData extends Model
-{
+class CustomerData extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_order_customer_data';

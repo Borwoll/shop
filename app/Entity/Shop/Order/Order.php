@@ -6,9 +6,10 @@ use App\Entity\Shop\DeliveryMethod;
 use App\Entity\User\User;
 use Illuminate\Database\Eloquent\Model;
 use DomainException;
+use Orchid\Screen\AsSource;
 
-class Order extends Model
-{
+class Order extends Model {
+    use AsSource;
     protected $table = 'shop_orders';
     protected $fillable = [
         'user_id', 'customer_data_id', 'delivery_data_id',
@@ -29,15 +30,13 @@ class Order extends Model
         ]);
     }
 
-    public function setPaymentMethod(string $paymentMethod): void
-    {
+    public function setPaymentMethod(string $paymentMethod): void {
         $this->update([
             'payment_method' => $paymentMethod
         ]);
     }
 
-    public function setDeliveryMethodInfo(int $id, string $name, int $cost): void
-    {
+    public function setDeliveryMethodInfo(int $id, string $name, int $cost): void {
         $costWithoutDelivery = $this->cost;
 
         $this->update([
@@ -48,22 +47,19 @@ class Order extends Model
         ]);
     }
 
-    public function setDeliveryDataInfo(int $deliveryDataId): void
-    {
+    public function setDeliveryDataInfo(int $deliveryDataId): void {
         $this->update([
             'delivery_data_id' => $deliveryDataId
         ]);
     }
 
-    public function setCustomerDataInfo(int $customerDataId): void
-    {
+    public function setCustomerDataInfo(int $customerDataId): void {
         $this->update([
             'customer_data_id' => $customerDataId
         ]);
     }
 
-    public function pay(): void
-    {
+    public function pay(): void {
         if ($this->isPaid()) {
             throw new DomainException('Order is already paid.');
         }
@@ -72,8 +68,7 @@ class Order extends Model
         $this->addStatus(Status::PAID);
     }
 
-    public function send(): void
-    {
+    public function send(): void {
         if ($this->isSent()) {
             throw new DomainException('Order is already sent.');
         }
@@ -81,8 +76,7 @@ class Order extends Model
         $this->addStatus(Status::SENT);
     }
 
-    public function complete(): void
-    {
+    public function complete(): void {
         if ($this->isCompleted()) {
             throw new DomainException('Order is already completed.');
         }
@@ -90,14 +84,12 @@ class Order extends Model
         $this->addStatus(Status::COMPLETED);
     }
 
-    public function cancelByAdmin($reason): void
-    {
+    public function cancelByAdmin($reason): void {
         $this->cancel($reason);
         $this->addStatus(Status::CANCELLED);
     }
 
-    public function cancelByUser($reason): void
-    {
+    public function cancelByUser($reason): void {
         if (!$this->canBeCanceled()) {
             throw new DomainException('Order cannot be canceled.');
         }
@@ -106,8 +98,7 @@ class Order extends Model
         $this->addStatus(Status::CANCELLED_BY_CUSTOMER);
     }
 
-    private function cancel($reason): void
-    {
+    private function cancel($reason): void {
         if ($this->isCancelled()) {
             throw new DomainException('Order is already cancelled.');
         }
@@ -117,69 +108,56 @@ class Order extends Model
         ]);
     }
 
-    public function getTotalCost(): int
-    {
+    public function getTotalCost(): int {
         return $this->cost + $this->delivery_cost;
     }
 
-    public function canBePaid(): bool
-    {
+    public function canBePaid(): bool {
         return $this->isNew();
     }
 
-    public function canBeCanceled(): bool
-    {
+    public function canBeCanceled(): bool {
         return $this->isNew();
     }
 
-    public function canBeSent(): bool
-    {
+    public function canBeSent(): bool {
         return $this->isPaid();
     }
 
-    public function canBeCompleted(): bool
-    {
+    public function canBeCompleted(): bool {
         return $this->isSent();
     }
 
-    public function isNew(): bool
-    {
+    public function isNew(): bool {
         return $this->current_status == Status::NEW;
     }
 
-    public function isPaid(): bool
-    {
+    public function isPaid(): bool {
         return $this->current_status == Status::PAID;
     }
 
-    public function isSent(): bool
-    {
+    public function isSent(): bool {
         return $this->current_status == Status::SENT;
     }
 
-    public function isCompleted(): bool
-    {
+    public function isCompleted(): bool {
         return $this->current_status == Status::COMPLETED;
     }
 
-    public function isCancelled(): bool
-    {
+    public function isCancelled(): bool {
         return $this->current_status == Status::CANCELLED
             || $this->current_status == Status::CANCELLED_BY_CUSTOMER;
     }
 
-    public function isCancelledByCustomer(): bool
-    {
+    public function isCancelledByCustomer(): bool {
         return $this->current_status == Status::CANCELLED_BY_CUSTOMER;
     }
 
-    public function isCancelledByAdmin(): bool
-    {
+    public function isCancelledByAdmin(): bool {
         return $this->current_status == Status::CANCELLED;
     }
 
-    private function addStatus($value): void
-    {
+    private function addStatus($value): void {
         $this->update([
             'current_status' => $value
         ]);
@@ -190,33 +168,27 @@ class Order extends Model
         ]);
     }
 
-    public function user()
-    {
+    public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function deliveryMethod()
-    {
+    public function deliveryMethod() {
         return $this->belongsTo(DeliveryMethod::class, 'delivery_method_id', 'id');
     }
 
-    public function deliveryData()
-    {
+    public function deliveryData() {
         return $this->belongsTo(DeliveryData::class, 'delivery_data_id', 'id');
     }
 
-    public function customerData()
-    {
+    public function customerData() {
         return $this->belongsTo(CustomerData::class, 'customer_data_id', 'id');
     }
 
-    public function statuses()
-    {
+    public function statuses() {
         return $this->hasMany(Status::class, 'order_id', 'id');
     }
 
-    public function items()
-    {
+    public function items() {
         return $this->hasMany(OrderItem::class, 'order_id', 'id');
     }
 }

@@ -5,7 +5,6 @@ namespace App\UseCases\Admin\Shop\Product;
 use App\Entity\Shop\Product\Characteristic;
 use App\Entity\Shop\Product\Product;
 use App\Http\Requests\Admin\Shop\Product\Characteristic\CreateVariantRequest;
-use App\Http\Requests\Admin\Shop\Product\Characteristic\CreateRequest;
 use App\Command\Admin\Shop\Product\Characteristic\Create\Command as CharacteristicCreateCommand;
 use App\Command\Admin\Shop\Product\Characteristic\AddVariant\Command as CharacteristicAddVariantCommand;
 use App\Command\Admin\Shop\Product\Characteristic\Remove\Command as CharacteristicRemoveCommand;
@@ -16,11 +15,6 @@ use App\UseCases\Service;
 
 class CharacteristicManageService extends Service
 {
-    public function create(CreateRequest $request, Product $product): void
-    {
-        $this->commandBus->handle(new CharacteristicCreateCommand($request, $product->id));
-    }
-
     public function addVariant(CreateVariantRequest $request, Characteristic $characteristic): void
     {
         $this->commandBus->handle(new CharacteristicAddVariantCommand($request, $characteristic));

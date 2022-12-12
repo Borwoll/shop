@@ -3,9 +3,10 @@
 namespace App\Entity\Shop\Characteristic;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class Characteristic extends Model
-{
+class Characteristic extends Model {
+    use AsSource;
     public const TYPE_INTEGER = 'Integer';
     public const TYPE_FLOAT = 'Float';
     public const TYPE_STRING = 'String';
@@ -32,18 +33,15 @@ class Characteristic extends Model
         ]);
     }
 
-    public function variants()
-    {
+    public function variants() {
         return $this->hasMany(Variant::class, 'id', 'characteristic_id');
     }
 
-    public function isRequired(): bool
-    {
+    public function isRequired(): bool {
         return $this->required === true;
     }
 
-    public static function typesList(): array
-    {
+    public static function typesList(): array {
         return [
             Characteristic::TYPE_INTEGER => 'Integer',
             Characteristic::TYPE_FLOAT => 'Float',

@@ -9,9 +9,10 @@ use App\Entity\Shop\Review;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Entity\Shop\Product\Characteristic as ProductCharacteristic;
+use Orchid\Screen\AsSource;
 
-class Product extends Model
-{
+class Product extends Model {
+    use AsSource;
     public const STATUS_ACTIVE = 'Active';
     public const STATUS_DRAFT = 'Draft';
 
@@ -47,36 +48,31 @@ class Product extends Model
         ]);
     }
 
-    public function activate(): void
-    {
+    public function activate(): void {
         $this->update([
             'status' => self::STATUS_ACTIVE
         ]);
     }
 
-    public function draft(): void
-    {
+    public function draft(): void {
         $this->update([
             'status' => self::STATUS_DRAFT
         ]);
     }
 
-    public function makeAvailable(): void
-    {
+    public function makeAvailable(): void {
         $this->update([
             'availability' => self::AVAILABILITY_IN_STOCK
         ]);
     }
 
-    public function makeUnavailable(): void
-    {
+    public function makeUnavailable(): void {
         $this->update([
             'availability' => self::AVAILABILITY_OUT_OF_STOCK
         ]);
     }
 
-    public function addCommentsCount(): void
-    {
+    public function addCommentsCount(): void {
         $commentsCount = $this->comments;
 
         $this->update([
@@ -84,8 +80,7 @@ class Product extends Model
         ]);
     }
 
-    public function reduceCommentsCount(): void
-    {
+    public function reduceCommentsCount(): void {
         $commentsCount = $this->comments;
 
         $this->update([
@@ -93,8 +88,7 @@ class Product extends Model
         ]);
     }
 
-    public function addReviewsCount(): void
-    {
+    public function addReviewsCount(): void {
         $reviewsCount = $this->reviews;
 
         $this->update([
@@ -102,8 +96,7 @@ class Product extends Model
         ]);
     }
 
-    public function reduceReviewsCount(): void
-    {
+    public function reduceReviewsCount(): void {
         $reviewsCount = $this->reviews;
 
         $this->update([
@@ -111,8 +104,7 @@ class Product extends Model
         ]);
     }
 
-    public function reduceQuantity(): void
-    {
+    public function reduceQuantity(): void {
         $quantity = $this->quantity;
 
         $this->update([
@@ -120,39 +112,32 @@ class Product extends Model
         ]);
     }
 
-    public function isAvailable(): bool
-    {
+    public function isAvailable(): bool {
         return $this->availability == self::AVAILABILITY_IN_STOCK;
     }
 
-    public function isUnavailable(): bool
-    {
+    public function isUnavailable(): bool {
         return $this->availability == self::AVAILABILITY_OUT_OF_STOCK;
     }
 
-    public function isActive(): bool
-    {
+    public function isActive(): bool {
         return $this->status == self::STATUS_ACTIVE;
     }
 
-    public function isDraft(): bool
-    {
+    public function isDraft(): bool {
         return $this->status == self::STATUS_DRAFT;
     }
 
-    public function getImageUrl($photoUrl): string
-    {
+    public function getImageUrl($photoUrl): string {
         return $photoUrl ? '/storage/' . $photoUrl : '';
     }
 
-    public function canBeOrdered(): bool
-    {
+    public function canBeOrdered(): bool {
         return $this->quantity > 0
             && $this->availability == self::AVAILABILITY_IN_STOCK;
     }
 
-    public function recountRating(): void
-    {
+    public function recountRating(): void {
         $sum = 0;
 
         foreach ($this->reviews()->get() as $review) {
@@ -166,61 +151,50 @@ class Product extends Model
         ]);
     }
 
-    public function category()
-    {
+    public function category() {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function brand()
-    {
+    public function brand() {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
-    public function characteristics()
-    {
+    public function characteristics() {
         return $this->hasMany(ProductCharacteristic::class, 'product_id', 'id');
     }
 
-    public function photos()
-    {
+    public function photos() {
         return $this->hasMany(Photo::class, 'product_id', 'id');
     }
 
-    public function reviews()
-    {
+    public function reviews() {
         return $this->hasMany(Review::class, 'product_id', 'id');
     }
 
-    public function comments()
-    {
+    public function comments() {
         return $this->hasMany(Comment::class, 'product_id', 'id')->where('parent_id', '=', null);
     }
 
-    public function reviewWhere(int $rating)
-    {
+    public function reviewWhere(int $rating) {
         return $this->hasMany(Review::class, 'product_id', 'id')->where('rating', $rating);
     }
 
-    public function scopeActive(Builder $query)
-    {
+    public function scopeActive(Builder $query) {
         return $query->where('status', self::STATUS_ACTIVE);
     }
 
-    public function scopeAvailable(Builder $query)
-    {
+    public function scopeAvailable(Builder $query) {
         return $query->where('availability', self::AVAILABILITY_IN_STOCK);
     }
 
-    public static function availabilitiesList(): array
-    {
+    public static function availabilitiesList(): array {
         return [
             Product::AVAILABILITY_OUT_OF_STOCK => 'Out Of Stock',
             Product::AVAILABILITY_IN_STOCK => 'In Stock'
         ];
     }
 
-    public static function statusesList(): array
-    {
+    public static function statusesList(): array {
         return [
             Product::STATUS_DRAFT => 'Draft',
             Product::STATUS_ACTIVE => 'Active'

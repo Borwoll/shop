@@ -5,8 +5,7 @@ namespace App\Entity\User;
 use App\Entity\Region;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
-{
+class Profile extends Model {
     public $timestamps = false;
 
     protected $table = 'users_profile';
@@ -15,8 +14,7 @@ class Profile extends Model
         'patronymic', 'phone', 'code'
     ];
 
-    public static function blank(int $userId): self
-    {
+    public static function blank(int $userId): self {
         return static::create([
             'user_id' => $userId
         ]);

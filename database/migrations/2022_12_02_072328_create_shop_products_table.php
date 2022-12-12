@@ -25,8 +25,8 @@ return new class extends Migration
             $table->text('content');
             $table->string('status');
             $table->integer('rating')->nullable();
-            $table->integer('reviews');
-            $table->integer('comments');
+            $table->integer('reviews')->nullable();
+            $table->integer('comments')->nullable();
         });
 
         Schema::create('shop_product_photos', function (Blueprint $table) {

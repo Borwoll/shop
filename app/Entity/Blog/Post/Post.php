@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Orchid\Screen\AsSource;
 
-class Post extends Model
-{
+class Post extends Model {
     use AsSource;
     public const STATUS_ACTIVE = 'Active';
     public const STATUS_DRAFT = 'Draft';
@@ -43,57 +42,47 @@ class Post extends Model
         ]);
     }
 
-    public function verify(): void
-    {
+    public function verify(): void {
         $this->update([
             'status' => self::STATUS_ACTIVE
         ]);
     }
 
-    public function draft(): void
-    {
+    public function draft(): void {
         $this->update([
             'status' => self::STATUS_DRAFT
         ]);
     }
 
-    public function author()
-    {
+    public function author() {
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 
-    public function category()
-    {
+    public function category() {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function commentsList()
-    {
+    public function commentsList() {
         return $this->hasMany(Comment::class, 'post_id', 'id')->where('parent_id', '=', null);
     }
 
-    public function scopeActive(Builder $query)
-    {
+    public function scopeActive(Builder $query) {
         return $query->where('status', self::STATUS_ACTIVE);
     }
 
-    public function isActive(): bool
-    {
+    public function isActive(): bool {
         return $this->status === self::STATUS_ACTIVE;
     }
 
-    public function isDraft(): bool
-    {
+    public function isDraft(): bool {
         return $this->status === self::STATUS_DRAFT;
     }
 
-    public function getImageUrl(): string
-    {
+    public function getImageUrl(): string {
         return $this->photo ? '/storage/' . $this->photo : '';
     }
 
-    public function addLikesCount(): void
-    {
+    public function addLikesCount(): void {
         $likes = $this->likes;
 
         $this->update([
@@ -101,8 +90,7 @@ class Post extends Model
         ]);
     }
 
-    public function reduceLikesCount(): void
-    {
+    public function reduceLikesCount(): void {
         $likes = $this->likes;
 
         $this->update([
@@ -110,8 +98,7 @@ class Post extends Model
         ]);
     }
 
-    public function addViewsCount(): void
-    {
+    public function addViewsCount(): void {
         $views = $this->views;
 
         $this->update([
@@ -119,8 +106,7 @@ class Post extends Model
         ]);
     }
 
-    public function addCommentsCount(): void
-    {
+    public function addCommentsCount(): void {
         $comments = $this->comments;
 
         $this->update([
@@ -128,8 +114,7 @@ class Post extends Model
         ]);
     }
 
-    public function reduceCommentsCount(): void
-    {
+    public function reduceCommentsCount(): void {
         $comments = $this->comments;
 
         $this->update([
@@ -137,8 +122,7 @@ class Post extends Model
         ]);
     }
 
-    public static function statusesList(): array
-    {
+    public static function statusesList(): array {
         return [
             Post::STATUS_ACTIVE => 'Active',
             Post::STATUS_DRAFT => 'Draft'

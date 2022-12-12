@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Entity\Shop\Characteristic;
-
+use Orchid\Screen\AsSource;
 use Illuminate\Database\Eloquent\Model;
 
-class Variant extends Model
-{
+class Variant extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_characteristic_variants';

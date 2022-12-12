@@ -10,16 +10,9 @@ use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 use Orchid\Support\Color;
 
-class PlatformProvider extends OrchidServiceProvider
-{
-    /**
-     * @param Dashboard $dashboard
-     */
-    public function boot(Dashboard $dashboard): void
-    {
+class PlatformProvider extends OrchidServiceProvider {
+    public function boot(Dashboard $dashboard): void {
         parent::boot($dashboard);
-
-        // ...
     }
 
     public function registerMainMenu(): array
@@ -59,14 +52,14 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title(__('Магазин')),
 
             Menu::make(__('Категории'))
-                ->icon('user')
+                ->icon('list')
                 ->route('platform.systems.shop.categories')
                 ->permission('platform.systems.shop.category'),
 
-            // Menu::make(__('Характеристики'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.characteristics')
-            //     ->permission('platform.systems.shop.characteristics'),
+            Menu::make(__('Характеристики'))
+                ->icon('equalizer')
+                ->route('platform.systems.shop.characteristics')
+                ->permission('platform.systems.shop.characteristics'),
 
             Menu::make(__('Комментарии'))
                 ->icon('speech')
@@ -74,24 +67,24 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.shop.comments'),
 
             Menu::make(__('Методы доставки'))
-                ->icon('modules')
+                ->icon('envelope')
                 ->route('platform.systems.shop.delivery')
                 ->permission('platform.systems.shop.delivery'),
 
-            // Menu::make(__('Заказы'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.orders')
-            //     ->permission('platform.systems.shop.orders'),
+            Menu::make(__('Заказы'))
+                ->icon('modules')
+                ->route('platform.systems.shop.orders')
+                ->permission('platform.systems.shop.orders'),
 
-            // Menu::make(__('Товары'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.products')
-            //     ->permission('platform.systems.shop.products'),
+            Menu::make(__('Товары'))
+                ->icon('tag')
+                ->route('platform.systems.shop.products')
+                ->permission('platform.systems.shop.products'),
 
-            // Menu::make(__('Отзывы'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.reviews')
-            //     ->permission('platform.systems.shop.reviews'),
+            Menu::make(__('Отзывы'))
+                ->icon('paper-plane')
+                ->route('platform.systems.shop.reviews')
+                ->permission('platform.systems.shop.reviews'),
 
             Menu::make(__('Пользователи'))
                 ->icon('user')

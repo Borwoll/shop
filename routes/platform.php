@@ -40,6 +40,19 @@ use App\Orchid\Screens\Shop\Delivery\DeliveryIndex;
 use App\Orchid\Screens\Shop\Delivery\DeliveryEdit;
 use App\Orchid\Screens\Shop\Delivery\DeliveryCreate;
 
+use App\Orchid\Screens\Shop\Reviews\ReviewsIndex;
+use App\Orchid\Screens\Shop\Reviews\ReviewsEdit;
+
+use App\Orchid\Screens\Shop\Products\ProductsIndex;
+use App\Orchid\Screens\Shop\Products\ProductsEdit;
+use App\Orchid\Screens\Shop\Products\ProductsCreate;
+
+use App\Orchid\Screens\Shop\Orders\OrdersIndex;
+
+use App\Orchid\Screens\Shop\Characteristics\CharacteristicsIndex;
+use App\Orchid\Screens\Shop\Characteristics\CharacteristicsEdit;
+use App\Orchid\Screens\Shop\Characteristics\CharacteristicsCreate;
+
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -185,6 +198,60 @@ Route::screen('shop/delivery/create', DeliveryCreate::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.systems.shop.delivery')
     ->push(__('Создать'), route('platform.systems.shop.delivery.create')));
+
+Route::screen('shop/reviews', ReviewsIndex::class)
+    ->name('platform.systems.shop.reviews')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Магазин / Отзывы'), route('platform.systems.shop.reviews')));
+
+Route::screen('shop/reviews/{reviews}/edit', ReviewsEdit::class)
+    ->name('platform.systems.shop.reviews.edit')
+    ->breadcrumbs(fn (Trail $trail, $reviews) => $trail
+    ->parent('platform.systems.shop.reviews')
+    ->push(__('Редактировать'), route('platform.systems.shop.reviews.edit', $reviews)));
+
+Route::screen('shop/products', ProductsIndex::class)
+    ->name('platform.systems.shop.products')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Магазин / Товары'), route('platform.systems.shop.products')));
+
+Route::screen('shop/products/{products}/edit', ProductsEdit::class)
+    ->name('platform.systems.shop.products.edit')
+    ->breadcrumbs(fn (Trail $trail, $products) => $trail
+    ->parent('platform.systems.shop.products')
+    ->push(__('Редактировать'), route('platform.systems.shop.products.edit', $products)));
+
+Route::screen('shop/products/create', ProductsCreate::class)
+    ->name('platform.systems.shop.products.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.systems.shop.products')
+    ->push(__('Создать'), route('platform.systems.shop.products.create')));
+
+Route::screen('shop/characteristics', CharacteristicsIndex::class)
+    ->name('platform.systems.shop.characteristics')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Магазин / Характеристики'), route('platform.systems.shop.characteristics')));
+
+Route::screen('shop/characteristics/{characteristics}/edit', CharacteristicsEdit::class)
+    ->name('platform.systems.shop.characteristics.edit')
+    ->breadcrumbs(fn (Trail $trail, $characteristics) => $trail
+    ->parent('platform.systems.shop.characteristics')
+    ->push(__('Редактировать'), route('platform.systems.shop.characteristics.edit', $characteristics)));
+
+Route::screen('shop/characteristics/create', CharacteristicsCreate::class)
+    ->name('platform.systems.shop.characteristics.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.systems.shop.characteristics')
+    ->push(__('Создать'), route('platform.systems.shop.characteristics.create')));
+
+Route::screen('shop/orders', OrdersIndex::class)
+    ->name('platform.systems.shop.orders')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Магазин / Заказы'), route('platform.systems.shop.orders')));
 
 Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')

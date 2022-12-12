@@ -8,10 +8,6 @@ use App\Query\Shop\Category\Find\FindCategoryParentsQuery;
 use App\Query\Shop\Category\Find\FindCategorySiblingsDescQuery;
 use App\Query\Shop\Category\Find\FindCategorySiblingsQuery;
 use App\Entity\Shop\Category;
-use App\Http\Requests\Admin\Shop\Category\CreateRequest;
-use App\Http\Requests\Admin\Shop\Category\UpdateRequest;
-use App\Command\Admin\Shop\Category\Create\Command as CategoryCreateCommand;
-use App\Command\Admin\Shop\Category\Update\Command as CategoryUpdateCommand;
 use App\Command\Admin\Shop\Category\Remove\Command as CategoryRemoveCommand;
 use App\Command\Admin\Shop\Category\First\Command as CategoryFirstCommand;
 use App\Command\Admin\Shop\Category\Up\Command as CategoryUpCommand;
@@ -21,16 +17,6 @@ use App\UseCases\Service;
 
 class CategoryManageService extends Service
 {
-    public function create(CreateRequest $request): void
-    {
-        $this->commandBus->handle(new CategoryCreateCommand($request));
-    }
-
-    public function update(UpdateRequest $request, Category $category): void
-    {
-        $this->commandBus->handle(new CategoryUpdateCommand($category, $request));
-    }
-
     public function remove(Category $category): void
     {
         $this->commandBus->handle(new CategoryRemoveCommand($category));
