@@ -82,7 +82,6 @@
                         <table class="table table-bordered table-striped table-responsive">
                             <thead>
                             <tr>
-                                <th>Фотография</th>
                                 <th>Имя</th>
                                 <th>Цена за 1 товар</th>
                                 <th>Количество</th>
@@ -93,7 +92,6 @@
 
                             @foreach ($order->items as $orderItem)
                                 <tr>
-                                    <td><img src="{{ $orderItem->product->photos()->exists() ? $orderItem->product->photos()->first()->getUrl() : '' }}" alt="" width="100px"></td>
                                     <td><a href="{{ route('shop.products.single', ['id' => $orderItem->product->id, 'slug' => $orderItem->product->slug]) }}">{{ $orderItem->product_name }}</a></td>
                                     <td>{{ $orderItem->product_price }}</td>
                                     <td>{{ $orderItem->product_quantity }}</td>
@@ -103,54 +101,6 @@
 
                             </tbody>
                         </table>
-
-                        <div class="row">
-                            <h5>История статусов</h5>
-                            <br><br>
-
-                            <table class="table table-bordered table-striped table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>Статус</th>
-                                    <th>Время</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <tr>
-                                    <th><span class="badge badge-danger">Новое</span></th>
-                                    <td>{{ date('d-M h:i', strtotime($order->created_at)) }}</td>
-                                </tr>
-
-                                @foreach ($order->statuses as $status)
-                                    <tr>
-                                        <td>
-                                            @if ($status->isPaid())
-                                                <span class="badge badge-primary">Оплачено</span>
-                                            @endif
-
-                                            @if ($status->isSent())
-                                                <span class="badge badge-primary">Отправлено</span>
-                                            @endif
-
-                                            @if ($status->isCompleted())
-                                                <span class="badge badge-success">Завершенный</span>
-                                            @endif
-
-                                            @if ($status->isCancelledByCustomer())
-                                                <span class="badge badge-danger">Отменено клиентом</span>
-                                            @endif
-
-                                            @if ($status->isCancelledByAdmin())
-                                                <span class="badge badge-danger">Отменено администратором</span>
-                                            @endif
-                                        </td>
-                                        <td>{{ date('d-M h:i', strtotime($status->created_at)) }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
             </div>
