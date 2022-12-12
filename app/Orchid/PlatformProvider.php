@@ -15,8 +15,7 @@ class PlatformProvider extends OrchidServiceProvider {
         parent::boot($dashboard);
     }
 
-    public function registerMainMenu(): array
-    {
+    public function registerMainMenu(): array {
         return [
             Menu::make('Главная')
                 ->icon('monitor')

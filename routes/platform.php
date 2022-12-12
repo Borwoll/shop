@@ -46,6 +46,10 @@ use App\Orchid\Screens\Shop\Reviews\ReviewsEdit;
 use App\Orchid\Screens\Shop\Products\ProductsIndex;
 use App\Orchid\Screens\Shop\Products\ProductsEdit;
 use App\Orchid\Screens\Shop\Products\ProductsCreate;
+use App\Orchid\Screens\Shop\Products\ProductsPhotoCreate;
+use App\Orchid\Screens\Shop\Products\ProductsPhotoEdit;
+use App\Orchid\Screens\Shop\Products\ProductsCharacteristicCreate;
+use App\Orchid\Screens\Shop\Products\ProductsCharacteristicEdit;
 
 use App\Orchid\Screens\Shop\Orders\OrdersIndex;
 
@@ -228,6 +232,30 @@ Route::screen('shop/products/create', ProductsCreate::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.systems.shop.products')
     ->push(__('Создать'), route('platform.systems.shop.products.create')));
+
+Route::screen('shop/products/photos/create', ProductsPhotoCreate::class)
+    ->name('platform.systems.shop.products.photo.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.systems.shop.products')
+    ->push(__('Создать'), route('platform.systems.shop.products.photo.create')));
+
+Route::screen('shop/photo/{photo}/edit', ProductsPhotoEdit::class)
+    ->name('platform.systems.shop.products.photo.edit')
+    ->breadcrumbs(fn (Trail $trail, $photo) => $trail
+    ->parent('platform.systems.shop.products')
+    ->push(__('Редактировать'), route('platform.systems.shop.products.photo.edit', $photo)));
+
+Route::screen('shop/products/characteristics/create', ProductsCharacteristicCreate::class)
+    ->name('platform.systems.shop.products.characteristic.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.systems.shop.products')
+    ->push(__('Создать'), route('platform.systems.shop.products.characteristic.create')));
+
+Route::screen('shop/characteristic/{characteristic}/edit', ProductsCharacteristicEdit::class)
+    ->name('platform.systems.shop.products.characteristic.edit')
+    ->breadcrumbs(fn (Trail $trail, $characteristic) => $trail
+    ->parent('platform.systems.shop.products')
+    ->push(__('Редактировать'), route('platform.systems.shop.products.characteristic.edit', $characteristic)));
 
 Route::screen('shop/characteristics', CharacteristicsIndex::class)
     ->name('platform.systems.shop.characteristics')
