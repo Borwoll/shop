@@ -15,7 +15,6 @@ class RegionsEditLayout extends Rows
         return [
             Input::make('regions.parent_id')
                 ->type('number')
-                ->max(255)
                 ->title(__('ID родителя'))
                 ->placeholder(__('ID родителя')),
 

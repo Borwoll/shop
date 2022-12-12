@@ -36,6 +36,10 @@ use App\Orchid\Screens\Shop\Categories\CategoriesCreate;
 use App\Orchid\Screens\Shop\Comments\ShopCommentsIndex;
 use App\Orchid\Screens\Shop\Comments\ShopCommentsEdit;
 
+use App\Orchid\Screens\Shop\Delivery\DeliveryIndex;
+use App\Orchid\Screens\Shop\Delivery\DeliveryEdit;
+use App\Orchid\Screens\Shop\Delivery\DeliveryCreate;
+
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -164,6 +168,24 @@ Route::screen('shop/comments/{comments}/edit', ShopCommentsEdit::class)
     ->parent('platform.systems.shop.comments')
     ->push(__('Редактировать'), route('platform.systems.shop.comments.edit', $comments)));
     
+Route::screen('shop/delivery', DeliveryIndex::class)
+    ->name('platform.systems.shop.delivery')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Магазин / Методы доставки'), route('platform.systems.shop.delivery')));
+
+Route::screen('shop/delivery/{delivery}/edit', DeliveryEdit::class)
+    ->name('platform.systems.shop.delivery.edit')
+    ->breadcrumbs(fn (Trail $trail, $delivery) => $trail
+    ->parent('platform.systems.shop.delivery')
+    ->push(__('Редактировать'), route('platform.systems.shop.delivery.edit', $delivery)));
+
+Route::screen('shop/delivery/create', DeliveryCreate::class)
+    ->name('platform.systems.shop.delivery.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.systems.shop.delivery')
+    ->push(__('Создать'), route('platform.systems.shop.delivery.create')));
+
 Route::screen('users/{user}/edit', UserEditScreen::class)
     ->name('platform.systems.users.edit')
     ->breadcrumbs(fn (Trail $trail, $user) => $trail

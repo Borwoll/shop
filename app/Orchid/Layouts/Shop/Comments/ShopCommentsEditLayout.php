@@ -15,20 +15,17 @@ class ShopCommentsEditLayout extends Rows
         return [
             Input::make('shop_product_comments.parent_id')
                 ->type('number')
-                ->max(255)
                 ->title(__('ID родителя'))
                 ->placeholder(__('ID родителя')),
 
             Input::make('shop_product_comments.author_id')
                 ->type('number')
-                ->max(255)
                 ->required()
                 ->title(__('ID автора'))
                 ->placeholder(__('ID автора')),
 
             Input::make('shop_product_comments.product_id')
                 ->type('number')
-                ->max(255)
                 ->required()
                 ->title(__('ID товара'))
                 ->placeholder(__('ID товара')),
@@ -42,7 +39,6 @@ class ShopCommentsEditLayout extends Rows
 
             Input::make('shop_product_comments.active')
                 ->type('number')
-                ->max(255)
                 ->required()
                 ->title(__('Статус'))
                 ->placeholder(__('Статус')),

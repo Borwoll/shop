@@ -73,10 +73,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.systems.shop.comments')
                 ->permission('platform.systems.shop.comments'),
 
-            // Menu::make(__('Методы доставки'))
-            //     ->icon('user')
-            //     ->route('platform.systems.shop.delivery')
-            //     ->permission('platform.systems.shop.delivery'),
+            Menu::make(__('Методы доставки'))
+                ->icon('modules')
+                ->route('platform.systems.shop.delivery')
+                ->permission('platform.systems.shop.delivery'),
 
             // Menu::make(__('Заказы'))
             //     ->icon('user')

@@ -41,7 +41,6 @@ class CategoryEditLayout extends Rows
 
             Input::make('blog_categories.parent_id')
                 ->type('number')
-                ->max(255)
                 ->title(__('Родитель'))
                 ->placeholder(__('Родитель')),
         ];

@@ -15,7 +15,6 @@ class CommentsEditLayout extends Rows
         return [
             Input::make('blog_post_comments.parentId')
                 ->type('number')
-                ->max(255)
                 ->title(__('ID родителя'))
                 ->placeholder(__('ID родителя')),
 

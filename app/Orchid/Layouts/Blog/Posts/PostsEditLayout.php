@@ -15,20 +15,17 @@ class PostsEditLayout extends Rows
         return [
             Input::make('blog_posts.author_id')
                 ->type('number')
-                ->max(255)
                 ->required()
                 ->title(__('ID автора'))
                 ->placeholder(__('ID автора')),
 
             Input::make('blog_posts.category_id')
                 ->type('number')
-                ->max(255)
                 ->title(__('ID категории'))
                 ->placeholder(__('ID категории')),
 
             Input::make('blog_posts.photo')
                 ->type('text')
-                ->max(255)
                 ->title(__('Название фотографии'))
                 ->placeholder(__('Название фотографии')),
 

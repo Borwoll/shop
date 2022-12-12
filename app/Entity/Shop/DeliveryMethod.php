@@ -3,9 +3,10 @@
 namespace App\Entity\Shop;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
-class DeliveryMethod extends Model
-{
+class DeliveryMethod extends Model {
+    use AsSource;
     public $timestamps = false;
 
     protected $table = 'shop_delivery_methods';
