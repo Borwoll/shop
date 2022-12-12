@@ -95,6 +95,11 @@ class PlatformProvider extends OrchidServiceProvider {
                 ->icon('lock')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles'),
+
+            Menu::make(__('Экспорт'))
+                ->icon('database')
+                ->route('platform.systems.export')
+                ->permission('platform.systems.export'),
         ];
     }
 
@@ -130,7 +135,8 @@ class PlatformProvider extends OrchidServiceProvider {
 
             ItemPermission::group(__('Система'))
                 ->addPermission('platform.systems.roles', __('Роли'))
-                ->addPermission('platform.systems.users', __('Пользователи')),
+                ->addPermission('platform.systems.users', __('Пользователи'))
+                ->addPermission('platform.systems.export', __('Экспорт')),
         ];
     }
 }

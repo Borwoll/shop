@@ -7,7 +7,10 @@
     "require": {
         "php": "^8.0.2",
         "arrilot/laravel-widgets": "^3.13",
+        "carlos-meneses/laravel-mpdf": "^2.1",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
+        "dompdf/dompdf": "^2.0",
+        "elibyy/tcpdf-laravel": "^9.2",
         "guzzlehttp/guzzle": "^7.2",
         "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^9.19",
@@ -15,9 +18,12 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "mews/purifier": "^3.3",
         "orchid/platform": "^13.7",
-        "predis/predis": "^2.0"
+        "predis/predis": "^2.0",
+        "psr/log": "v2.*",
+        "psr/simple-cache": "2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

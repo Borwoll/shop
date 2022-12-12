@@ -6,7 +6,7 @@
                     <div class="product">
                         <div class="product__inner">
                             <div class="pro__thumb">
-                                <a href="#">
+                                <a href="{{ route('shop.products.single', ['id' => $product->id, 'slug' => $product->slug]) }}">
                                     <img src="{{ asset('images/product/2.png') }} " alt="product images">
                                 </a>
                             </div>
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="product__details">
-                            <h2><a href="product-details.html">{{ $product->title }}</a></h2>
+                            <h2><a href="{{ route('shop.products.single', ['id' => $product->id, 'slug' => $product->slug]) }}">{{ $product->title }}</a></h2>
                             <ul class="product__price">
                                 <li class="new__price">{{ $product->price }} ₽</li>
                             </ul>

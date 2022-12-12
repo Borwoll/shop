@@ -55,7 +55,6 @@ class PostsController extends Controller
         }
 
         $this->postService->view($post);
-
         return view('blog.posts.single', compact('post'));
     }
 

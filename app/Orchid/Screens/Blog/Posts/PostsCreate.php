@@ -83,7 +83,7 @@ class PostsCreate extends Screen {
             'blog_posts.slug' => 'required|string|max:255|unique:blog_posts',
             'blog_posts.description' => 'required|string',
             'blog_posts.content' => 'required|string',
-            'blog_posts.photo' => 'nullable|image|mimes:jpg,jpeg,png',
+            'blog_posts.photo' => 'nullable',
         ]);
 
         $posts

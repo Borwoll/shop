@@ -27,7 +27,3 @@
 @if (!$posts)
     <h2>Посты не найдены</h2>
 @endif
-
-<nav class="blog-pagination justify-content-center d-flex">
-    {{ $posts->links() }}
-</nav>

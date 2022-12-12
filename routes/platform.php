@@ -60,6 +60,8 @@ use App\Orchid\Screens\Shop\Characteristics\CharacteristicsCreate;
 use App\Orchid\Screens\Shop\Characteristics\VariantEdit;
 use App\Orchid\Screens\Shop\Characteristics\VariantCreate;
 
+use App\Orchid\Screens\Export\ExportIndex;
+
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -337,3 +339,9 @@ Route::screen('roles', RoleListScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
     ->parent('platform.main')
     ->push(__('Роли'), route('platform.systems.roles')));
+
+Route::screen('export', ExportIndex::class)
+    ->name('platform.systems.export')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+    ->parent('platform.main')
+    ->push(__('Экспорт'), route('platform.systems.export')));
