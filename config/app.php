@@ -187,6 +187,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        App\Providers\DropboxServiceProvider::class,
         /*
          * Application Service Providers...
          */

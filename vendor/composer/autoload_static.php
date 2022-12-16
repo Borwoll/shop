@@ -17,11 +17,14 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
@@ -29,11 +32,8 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '86ade239cbe8025aa999b5c6eb117f17' => __DIR__ . '/..' . '/watson/active/src/helpers.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
         'cb61d74ad51d00867155534456b38b23' => __DIR__ . '/..' . '/mews/purifier/src/helpers.php',
         'fd4bcb0bca65a7921baebcc77d3f2daf' => __DIR__ . '/..' . '/orchid/platform/src/Support/helpers.php',
@@ -103,7 +103,9 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
             'Spatie\\LaravelPackageTools\\' => 27,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
+            'Spatie\\FlysystemDropbox\\' => 24,
             'Spatie\\FlareClient\\' => 19,
+            'Spatie\\Dropbox\\' => 15,
             'Spatie\\DbDumper\\' => 16,
             'Spatie\\Backup\\' => 14,
             'Spatie\\Backtrace\\' => 17,
@@ -193,6 +195,7 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
+            'GrahamCampbell\\GuzzleFactory\\' => 29,
         ),
         'F' => 
         array (
@@ -411,9 +414,17 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         array (
             0 => __DIR__ . '/..' . '/spatie/ignition/src',
         ),
+        'Spatie\\FlysystemDropbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/flysystem-dropbox/src',
+        ),
         'Spatie\\FlareClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/flare-client-php/src',
+        ),
+        'Spatie\\Dropbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/dropbox-api/src',
         ),
         'Spatie\\DbDumper\\' => 
         array (
@@ -653,6 +664,10 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'GrahamCampbell\\GuzzleFactory\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/graham-campbell/guzzle-factory/src',
         ),
         'Fruitcake\\Cors\\' => 
         array (
@@ -2342,6 +2357,7 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         'FontLib\\WOFF\\TableDirectoryEntry' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
+        'GrahamCampbell\\GuzzleFactory\\GuzzleFactory' => __DIR__ . '/..' . '/graham-campbell/guzzle-factory/src/GuzzleFactory.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',
@@ -7554,6 +7570,12 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         'Spatie\\DbDumper\\Exceptions\\CannotSetParameter' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/CannotSetParameter.php',
         'Spatie\\DbDumper\\Exceptions\\CannotStartDump' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/CannotStartDump.php',
         'Spatie\\DbDumper\\Exceptions\\DumpFailed' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/DumpFailed.php',
+        'Spatie\\Dropbox\\Client' => __DIR__ . '/..' . '/spatie/dropbox-api/src/Client.php',
+        'Spatie\\Dropbox\\Exceptions\\BadRequest' => __DIR__ . '/..' . '/spatie/dropbox-api/src/Exceptions/BadRequest.php',
+        'Spatie\\Dropbox\\InMemoryTokenProvider' => __DIR__ . '/..' . '/spatie/dropbox-api/src/InMemoryTokenProvider.php',
+        'Spatie\\Dropbox\\RefreshableTokenProvider' => __DIR__ . '/..' . '/spatie/dropbox-api/src/RefreshableTokenProvider.php',
+        'Spatie\\Dropbox\\TokenProvider' => __DIR__ . '/..' . '/spatie/dropbox-api/src/TokenProvider.php',
+        'Spatie\\Dropbox\\UploadSessionCursor' => __DIR__ . '/..' . '/spatie/dropbox-api/src/UploadSessionCursor.php',
         'Spatie\\FlareClient\\Api' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Api.php',
         'Spatie\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/HasContext.php',
         'Spatie\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/UsesTime.php',
@@ -7595,6 +7617,7 @@ class ComposerStaticInitf22fbb050f7dc745fbb1d2e34cb1c9ce
         'Spatie\\FlareClient\\Truncation\\TrimStringsStrategy' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Truncation/TrimStringsStrategy.php',
         'Spatie\\FlareClient\\Truncation\\TruncationStrategy' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Truncation/TruncationStrategy.php',
         'Spatie\\FlareClient\\View' => __DIR__ . '/..' . '/spatie/flare-client-php/src/View.php',
+        'Spatie\\FlysystemDropbox\\DropboxAdapter' => __DIR__ . '/..' . '/spatie/flysystem-dropbox/src/DropboxAdapter.php',
         'Spatie\\Ignition\\Config\\FileConfigManager' => __DIR__ . '/..' . '/spatie/ignition/src/Config/FileConfigManager.php',
         'Spatie\\Ignition\\Config\\IgnitionConfig' => __DIR__ . '/..' . '/spatie/ignition/src/Config/IgnitionConfig.php',
         'Spatie\\Ignition\\Contracts\\BaseSolution' => __DIR__ . '/..' . '/spatie/ignition/src/Contracts/BaseSolution.php',
