@@ -187,7 +187,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
-        App\Providers\DropboxServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -199,6 +199,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         App\Providers\Permissions::class,
+        App\Providers\DropboxServiceProvider::class,
     ],
 
     /*
