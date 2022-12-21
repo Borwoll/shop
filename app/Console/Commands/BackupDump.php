@@ -13,7 +13,6 @@ class BackupDump extends Command {
 
     protected $description = 'Экспорт базы данных в файл';
     protected $connection;
-    protected $mysqldumpPath;
     protected $filename;
     protected $localDisk;
     protected $localPath;
@@ -24,7 +23,6 @@ class BackupDump extends Command {
 
     public function __construct() {
         parent::__construct();
-        $this->mysqldumpPath = config('backup.mysql.mysqldump_path', 'mysqldump');
         $this->localDisk = config('backup.mysql.local-storage.disk', 'local');
         $this->localPath = config('backup.mysql.local-storage.path', null);
         $this->cloudSync = config('backup.mysql.cloud-storage.enabled', false);
@@ -110,7 +108,7 @@ class BackupDump extends Command {
         $portArg = !empty($port) ? '-P '.escapeshellarg($port) : '';
         $passwordArg = !empty($password) ? '-p'.escapeshellarg($password) : '';
 
-        $dumpCommand = "{$this->mysqldumpPath} -C -h {$hostname} {$portArg} -u{$username} {$passwordArg} --single-transaction --skip-lock-tables --quick {$databaseArg}";
+        $dumpCommand = "mysqldump -C -h {$hostname} {$portArg} -u{$username} {$passwordArg} --single-transaction --skip-lock-tables --quick {$databaseArg}";
 
         exec($dumpCommand, $dumpResult, $result);
         if ($result == 0) {

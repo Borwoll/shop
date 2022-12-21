@@ -2,8 +2,6 @@
 
 return [
     'mysql' => [
-        'mysql_path' => 'mysql',
-        'mysqldump_path' => 'mysqldump',
         'local-storage' => [
             'disk' => 'local',
             'path' => 'backups',
