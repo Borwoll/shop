@@ -1,6 +1,6 @@
 <p align="center">
     <b>Интернет магазин на Laravel 9.35.1</b> <br> <br>
-    <bВидео: https://www.youtube.com/watch?v=jtk1fPboxl0</b>
+    <b>Видео: https://www.youtube.com/watch?v=jtk1fPboxl0</b>
 </p>
 <hr>
 <p>
